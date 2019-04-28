@@ -2,6 +2,8 @@
 title: "Third"
 date: 2019-04-24T10:13:13+08:00
 draft: false
+categories: [development, publishing]
+tags: [hugo,content,static site generator]
 ---
 测试第三篇博客是不是生效了？ 哈哈哈啊哈的辅导书辅导书辅导书饭撒地方都是负担绘声绘色
 

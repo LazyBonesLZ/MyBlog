@@ -1,9 +1,14 @@
 baseURL = "http://blog.harddone.com/"
 languageCode = "zh-CN"
-title = "TJL的博客"
+title = "ColofulDark Blog"
 theme = "maupassant"
 # 默认是70
 summaryLength = 140 
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 
 [author]
   name = "ColofulDark"
