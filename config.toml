@@ -20,6 +20,10 @@ summaryLength = 140
   ## 是否禁止URL Path转小写
   disablePathToLower = true
 
+ [[params.links]]
+  title = "CoderZh Blog"
+  name = "CoderZh Blog"
+  url = "https://blog.coderzh.com/"
 
   [[params.links]]
   title = "Suntabu Blog"
