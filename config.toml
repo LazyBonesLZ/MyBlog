@@ -3,7 +3,12 @@ languageCode = "zh-CN"
 title = "ColofulDark Blog"
 theme = "maupassant"
 # 默认是70
-summaryLength = 140 
+summaryLength = 140
+hasCJKLanguage = true
+## 保持分类的原始名字（false会做转小写处理）
+preserveTaxonomyNames = true
+## 是否禁止URL Path转小写
+disablePathToLower = true
 
 [taxonomies]
   category = "categories"
@@ -20,10 +25,7 @@ summaryLength = 140
   description = "专注于IT互联网，包括但不限于Java、Android、Python等"
 
   busuanzi = true
-  ## 保持分类的原始名字（false会做转小写处理）
-  preserveTaxonomyNames = true
-  ## 是否禁止URL Path转小写
-  disablePathToLower = true
+ 
 
  [[params.links]]
   title = "CoderZh Blog"
