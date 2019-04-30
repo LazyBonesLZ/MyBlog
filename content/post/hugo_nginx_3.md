@@ -2,8 +2,8 @@
 title: "Hugo+Nginx： 利用webhook自动部署静态网站到远程CentOS服务器（三）"
 date: 2019-04-25T11:13:24+08:00
 draft: false
-categories: [Web]
-tags: [Web,Nginx,CentOS,Github,Webhook,自动部署]
+categories: [Website]
+tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
 ---
 # 前篇提要
 在上一篇中，我们主要介绍了服务器的环境安装。在本文中，我们将就具体的操作步骤加以说明并截图展示。
