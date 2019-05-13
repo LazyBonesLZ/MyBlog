@@ -13,10 +13,10 @@ Google IAP一直是项目测试组的噩梦。各种莫名其妙的无法购买�
 
 Google IAP 测试，检查项备忘：
 
- * 1. 检查app bundle id 是否正确；
+ *  检查app bundle id 是否正确；
 2. 检查google play public key 是否正确；
-3. 检查mksdk初始化的时候，是否开启了IAP功能；
-4. 联机调试查看log, “SSCIAPHelper”过滤，检查购买的 IAP item id是否正确；
+3. 检查是否开启了IAP功能；
+4. 联机调试查看log,检查购买的 IAP item id是否正确；
 5. 以上步骤都检查完了，如果还有问题，查看iap后台是否配置；
 6. 确保tester账号已被加到后台且配置正确；
 7. 确保tester账号在测试设备上是唯一登陆的账号；
