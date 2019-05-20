@@ -47,15 +47,15 @@ googleAnalytics = "UA-139304185-1"
   
 
   [[params.ads]]
-  title = "领取￥1888阿里云产品通用代金券"
+  title = "领取￥2000阿里云产品通用代金券"
   url = "https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=lpl70fmt"
 
   [[params.ads]]
-  title = "领取￥1888阿里云产品通用代金券"
+  title = "领取￥2000阿里云产品通用代金券"
   url = "https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=lpl70fmt"
   img = "https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg"
   [[params.ads]]
-  title = "领取￥1888阿里云产品通用代金券"
+  title = "领取￥2000阿里云产品通用代金券"
   url = "https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=lpl70fmt"
   img = "https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg"
 
@@ -67,11 +67,11 @@ googleAnalytics = "UA-139304185-1"
 
 [menu]
 
-  [[menu.main]]
-    identifier = "books"
-    name = "新书"
-    url = "/books/"
-    weight = 2
+  #[[menu.main]]
+   # identifier = "books"
+    #name = "新书"
+    #url = "/books/"
+    #weight = 2
 
   [[menu.main]]
     identifier = "archives"
