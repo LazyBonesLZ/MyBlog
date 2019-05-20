@@ -69,9 +69,9 @@ googleAnalytics = "UA-139304185-1"
 
   #[[menu.main]]
    # identifier = "books"
-    #name = "新书"
-    #url = "/books/"
-    #weight = 2
+   #name = "新书"
+   #url = "/books/"
+   #weight = 2
 
   [[menu.main]]
     identifier = "archives"
