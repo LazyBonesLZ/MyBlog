@@ -2,7 +2,7 @@
 title: "Android:Zbar 解码、ZXing 管理相机的补充（Zbar支持64位）"
 date: 2015-09-24T16:22:52+08:00
 draft: false
-categories: [Android]
+categories: [android]
 tags: [Android,ZXing,Zbar,扫描解码]
 ---
 

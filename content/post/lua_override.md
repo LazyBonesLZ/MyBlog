@@ -2,7 +2,7 @@
 title: "Lua 方法重载"
 date: 2019-04-18T10:01:05+08:00
 draft: false 
-categories: [Lua]
+categories: [lua]
 tags: [lua,override,方法重载]
 ---
 

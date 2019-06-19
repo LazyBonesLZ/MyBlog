@@ -2,7 +2,7 @@
 title: "自定义seekbar遇到的问题"
 date: 2018-11-07T15:00:47+08:00
 draft: false
-categories: [Android]
+categories: [android]
 tags: [Android,Seekbar,自定义进度条]
 ---
 

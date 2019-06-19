@@ -2,7 +2,7 @@
 title: "Unity调用Android参数为数组的方法"
 date: 2018-07-11T01:59:34+08:00
 draft: false
-categories: [Android]
+categories: [android]
 tags: [Android,Unity,Method,Array Params,参数,数组]
 ---
 

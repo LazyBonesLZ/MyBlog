@@ -2,7 +2,7 @@
 title: "Google IAP 遇到无法购买时检查方法"
 date: 2019-05-13T11:02:03+08:00
 draft: fasle
-categories: [Android]
+categories: [android]
 tags: [google iap,无法购买]
 ---
 

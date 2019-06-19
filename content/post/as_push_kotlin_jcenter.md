@@ -2,7 +2,7 @@
 title: "Android Studio3.3.2 发布Kotlin项目到Jcenter"
 date: 2019-04-17T11:42:49+08:00
 draft: false
-categories: [Android]
+categories: [android]
 tags: [Android,Android Studio3.3.2,Kotlin,Push to JCenter]
 ---
 
