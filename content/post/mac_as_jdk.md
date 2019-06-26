@@ -2,7 +2,7 @@
 title: "Mac OS Andriod Studio:Gradle 3.3 requires Java 7 or later to run.You are currently using Java 6"
 date: 2017-11-12T16:45:46+08:00
 draft: false
-categories: [android]
+categories: [Android]
 tags: [Android,Android Studio,Mac,JDK1.8,Gradle3.3]
 ---
 

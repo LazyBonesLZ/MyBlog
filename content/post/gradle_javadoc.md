@@ -2,7 +2,7 @@
 title: "Android Studio: compileDebugJavaWithJavac issue"
 date: 2019-05-10T15:03:34+08:00
 draft: fasle
-categories: [android]
+categories: [Android]
 tags: [compileDebugJavaWithJavac,编译错误]
 ---
 

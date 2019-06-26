@@ -2,7 +2,7 @@
 title: "Android https 突然提示证书验证失败"
 date: 2018-08-13T16:14:33+08:00
 draft: false
-categories: [android]
+categories: [Android]
 tags: [Android,Https,证书验证失败]
 ---
 

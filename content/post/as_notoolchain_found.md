@@ -2,7 +2,7 @@
 title: "No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android"
 date: 2019-06-14T16:27:33+08:00
 draft: false
-categories: [android]
+categories: [Android]
 tags: [Android Studio,No toolchains found,mips64el-linux-android]
 ---
 

@@ -2,7 +2,7 @@
 title: "Google play billing Alpha / Beta 测试"
 date: 2018-07-11T15:29:05+08:00
 draft: false
-categories: [android]
+categories: [Android]
 tags: [Android,GP,Billing,IAP, Alpha/Bata Test]
 ---
 

@@ -2,7 +2,7 @@
 title: "git 取消跟踪文件目录"
 date: 2019-04-30T14:33:57+08:00
 draft: false
-categories: [git]
+categories: [Git]
 tags: [git,取消跟踪,文件目录]
 ---
 

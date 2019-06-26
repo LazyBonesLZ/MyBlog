@@ -2,7 +2,7 @@
 title: "Hugo+Nginx： 利用webhook自动部署静态网站到远程CentOS服务器（一）"
 date: 2019-04-24T11:13:24+08:00
 draft: false
-categories: [website]
+categories: [Website]
 tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
 ---
 

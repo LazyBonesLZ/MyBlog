@@ -2,7 +2,7 @@
 title: "Python执行Android adb 命令"
 date: 2019-04-18T10:12:15+08:00
 draft: false
-categories: [python]
+categories: [Python]
 tags: [Python,adb]
 ---
 

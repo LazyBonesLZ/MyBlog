@@ -2,7 +2,7 @@
 title: "填坑：有工程依赖时，Gradle uploadArchives to Nexus/Maven"
 date: 2018-07-12T14:35:36+08:00
 draft: false
-categories: [android]
+categories: [Android]
 tags: [Android,Nexus,Private Maven,Multiple Module Dependencies]
 ---
 

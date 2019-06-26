@@ -2,7 +2,7 @@
 title: "进一步减小Unity项目的apk大小"
 date: 2019-06-14T16:54:06+08:00
 draft: false
-categories: [unity]
+categories: [Unity]
 tags: [Android Studio,Unity-Lua,Apk大小]
 
 ---
