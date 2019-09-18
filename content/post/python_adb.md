@@ -107,64 +107,97 @@ if __name__ == '__main__':
 
 	""" change commands and add shell"""
 
-	tag = ''
-
+	path = ''
+	package = ''
+	obbVersion = ''
+# see: https://blog.csdn.net/chengxuyuanyonghu/article/details/54972854
 	try:
-		opt, args = getopt.getopt(sys.argv[1:], "ht:", ['tag', 'help'])
+		opt, args = getopt.getopt(sys.argv[1:], "hf:p:v:", ['file=', 'package=','obbVersion=','help'])
 		for op, value in opt:
-			if op in ("-t", "--tag"):
-				tag = value
+			if op in ("-f", "--file"):
+				path = value
+			if op in ("-p", "--package"):
+				package = value
+			if op in ("-v", "--obbVersion"):
+				obbVersion = value
 			if op in ("-h", "--help"):
-				print "Usage: obb_push.py -t TAG_NAME"
+				print "Usage: obb_push.py -f obb/file/full/path -p com.example.app.bundleid -v app_vesion"
 				print "Options:"
-				print "  -t  TAG_NAME.Choose what you want to use tag, should be a obb file path !"
+				print "  <-f> <-p> <-v> should not be null !"
 				print ""
-				print "Sample : ./obb_push.py -t <obb file path>"
+				print "OR: <--file=> <--package=> <-obbVersion=> should not be null "
+				print ""
+				print "Sample : ./obb_push.py  -f obb/file/full/path.obb -p <com.example.app.bundleid> -v 15"
+				print ""
+				print "OR : ./obb_push.py --file=obb/file/full/path.obb --package=com.example.app.bundleid --obbVersion=15"
 				print ""
 				sys.exit()
+		
+
 	except getopt.GetoptError:  
-            print "Error: Could not find the args."
-            print "Usage: obb_push.py -t TAG_NAME"
-    	    print "Options:"
-    	    print "  -t  TAG_NAME.Choose what you want to use tag, should be a obb file path !"
-    	    print ""
-    	    print "Sample : ./obb_push.py -t <obb file path>"
-    	    print ""
-    	    sys.exit()
+           print "Usage: obb_push.py -f obb/file/full/path -p com.example.app.bundleid -v app_vesion"
+           print "Options:"
+           print "  <-f> <-p> <-v> should not be null !"
+           print "OR:"
+           print " <--file=> <--package=> <-obbVersion=> should not be null "
+           print ""
+           print "Sample : ./obb_push.py  -f obb/file/full/path.obb -p <com.example.app.bundleid> -v 15"
+           print ""
+           print "OR : ./obb_push.py --file=obb/file/full/path.obb --package=com.example.app.bundleid --obbVersion=15"
+           print ""
+           sys.exit()
 
 	
-	if tag == '':
+	if path == '':
 		print "you should input a obb file\'s path !"
 		exit()
 
-	print '======to get package name=======>'
-	obbFilePath = tag
+	print '\n'
+	print '||--------------------------------------------------------------||'
+	print '\n'
+	print 'NOTICE:'
+	print 'obb file name rule: [main.bundleVersionCode.bundleID.obb]'
+	print '\n'
+	print '||--------------------------------------------------------------||'
+	print '\n'
+
+	print 'Start to copy obb file >>>>>>>>> '
+	print '  (1)===============> parsing obb file name:'
+	obbFilePath = path
 	if obbFilePath == '':
 		print 'you should input a obb file\'s path !'
 		exit()
 	obbSubDirs = obbFilePath.split('/')
 	# index  = len(obbSubDirs) - 1
 	obbFileName = obbSubDirs[-1]
-	print '>>>obbFileName = ' + obbFileName
+	print obbFileName
 	if obbFileName == '' or obbFileName.find('.obb') == -1:
 		print 'can not find a obb file in the path !'
 		exit()
 	
-	tmpPackageName = obbFileName.split('.')
-	print  tmpPackageName
-	packageName = ''
+	# tmpPackageName = obbFileName.split('.')
+	# print  '  (2)===================> parsing result: ' 
+	# print tmpPackageName
+	print '\n'
+
+
+	# packageName = ''
 	# for com in tmpPackageName[2:-2]:
 	# 	print com
 	# 	if com == tmpPackageName[-2]:
 	# 	 	packageName += com
 	# 	else:
 	# 	 	packageName += com + "." 
-	packageName = '.'.join(tmpPackageName[2:-1])
-	print '>>>package name = ' + packageName
+	# packageName = '.'.join(tmpPackageName[2:-1])
+	# print '    get package name = ' + packageName
+	print '    get package name = ' + package
 
+    #os.system('adb shell mount -o remount -o rw /system')
+    
 
-	print '=======adb shell mkdir ========>'
-	obbDestPath = 'sdcard/Android/obb/' + packageName
+	print '\n'
+	print '  (3)===============> adb shell mkdir :'
+	obbDestPath = 'sdcard/Android/obb/' + package
 	subDir = ''
 	subDirs = obbDestPath.split('/')
 	for dir in subDirs:
@@ -172,17 +205,34 @@ if __name__ == '__main__':
 	 	# print subDir 
 	 	os.system('adb shell mkdir ' + subDir)
 
-	print '=======adb push obb file to device ========>'
+	print '\n'
+	print '  (4)===============> adb push obb file to device :'
 	pushCmd = 'adb push ' + obbFilePath.replace(' ','\\ ')+ ' /' + obbDestPath + '/' 
 	# print pushCmd
 	os.system(pushCmd)
 
+	print '\n'
+	print '  (5)===============> adb push rename obb file:'
+	newObbFileName = "main."+ obbVersion+"." + package + ".obb"
+	oldFileFullPath = '/' + obbDestPath + '/' + obbFileName 
+	newFileFullPath = '/' + obbDestPath + '/' + newObbFileName
+	print '  old:' + oldFileFullPath
+	reameCmd = 'adb shell mv ' + oldFileFullPath + " " + newFileFullPath
+	os.system(reameCmd)
+	print '  new:' + newFileFullPath
+	print '\n'
+	print '  (6)===============> Completed!!!'
+	print '\n'
 	exit()
 ```
 
 
-* 使用方法同上，最后执行命令 `python ./obb_push.py -t <obb file path>`
+* 使用方法同上，最后执行命令 :
 
-![02.png](https://upload-images.jianshu.io/upload_images/6174818-ac29ee1f2a26a142.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+```
+ python </path/obb_push.py> -p <app package name > -f </path/of/obbfile> -v <app version code>
+ 
+```
+
 
 
