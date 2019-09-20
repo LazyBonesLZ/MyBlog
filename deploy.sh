@@ -22,3 +22,16 @@ git push origin master
 
 # Come Back up to the Project Root
 cd ..
+
+# Add changes to git.
+git add .
+
+# Commit changes.
+msg2="add new content of site `date`"
+if [ $# -eq 1 ]
+  then msg2="$1"
+fi
+git commit -m "$msg2"
+
+# Push source and build repos.
+git push origin master

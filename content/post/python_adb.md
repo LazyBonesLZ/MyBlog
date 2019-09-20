@@ -227,7 +227,7 @@ if __name__ == '__main__':
 ```
 
 
-* 使用方法同上，最后执行命令 :
+* 使用方法，执行命令 :
 
 ```
  python </path/obb_push.py> -p <app package name > -f </path/of/obbfile> -v <app version code>
