@@ -105,7 +105,7 @@ I/FIAM.Headless: Removing display event listener
 ```
 这就是导致前面提到的奇怪log为什们会输出两次。最后两种解决方案：
 
-* 直接注释掉 `finish()` 调用
+* 直接注释掉 `finish()` 调用;
 * 将MainActivity声明为启动Activity.
 
 但是为什么直接调用`finish()`方法关闭掉前一个Activity后，In-App Messaging在App每次启动，就会出现`triggerEvent`失效的情况，是不是又回到了SDK内部有问题的结论了呢？等待官方解释。。。
