@@ -226,10 +226,9 @@ if __name__ == '__main__':
 	exit()
 ```
 
-
 * 使用方法，执行命令 :
 
-```
+```shell
  python </path/obb_push.py> -p <app package name > -f </path/of/obbfile> -v <app version code>
  
 ```
