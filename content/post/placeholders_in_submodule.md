@@ -26,7 +26,7 @@ android {
 
     defaultConfig {
      //...
-        //real placeholder
+        //fake placeholder
 
         manifestPlaceholders =
                 [CustomValue1           : '${CustomValue1}',
@@ -46,7 +46,7 @@ android {
 
     defaultConfig {
      //...
-        //fake placeholder
+        //real placeholder
 
         manifestPlaceholders =
                 [CustomValue1           : "Real Value1",
