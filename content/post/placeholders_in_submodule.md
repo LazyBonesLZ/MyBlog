@@ -26,7 +26,7 @@ android {
 
     defaultConfig {
      //...
-        //fake placeholder
+        //real placeholder
 
         manifestPlaceholders =
                 [CustomValue1           : '${CustomValue1}',
