@@ -16,9 +16,9 @@ Error:Execution failed for task':app:processDebugManifest'
 
 ```
 
-但是，如果我们直接在library module的gradle文件中直接定义这些占位符的值，那么在编译出的AAR格式的SDK中就会包含有默认的`meta-data`值，虽然我们在具体的项目的gradle再次定义占位符对应的值来替换library module中的默认值，但是，如果我们在具体项目中重新定义的某一个占位符定义为空值，那么该占位符在最终编译合并生成的`AndroidManifest.xml`中肯定使用library module中配置的默认值：或空或非空。这就不符合我们的将SDK独立出来的初衷了。
+但是，如果直接在library module的gradle文件中定义这些占位符的值，那么在编译出SDK的`AndroidManifest`中就会包含有默认的`meta-data`值。虽然在项目的gradle可以再次定义占位符对应的值来替换library module中的默认值，但是，如果在具体项目中重新定义的某一个占位符为空值，根据Android Studio合并`Manifest`的优先级规则，该占位符在最终编译合并生成的`AndroidManifest.xml`中肯定会使用library module中配置的默认值：或空或非空。这就不符合我们的预期了。
 
-所以最终的解决方案是，在library module的gradle中也要定义占位符,注意配置中的单引号：`''`:
+所以最终的解决方案：在library module的gradle中也要定义占位符,注意配置中的单引号：`''`:
 
 ```shell
 android {
