@@ -35,3 +35,37 @@ tags: [Android,Unity3d,屏幕重叠层检测,Screen Overlay Deteched]
 ***关闭应用中控制显示Toast的开关，世界清净了，阿弥陀佛！***
 
 后续：上文说到，在该设备上，运行原生测试应用时，也在不停的显示toast，同时申请权限，就不会弹出“屏幕重叠层检测”的对话框。原来是因为控制toast是否显示的开关被我默认关掉了，挖坑埋自己，还归罪unity。汗！
+
+----
+ English DOC
+----
+
+Gossip less, talk directly to the problem.
+On the Samsung Tablet T710 device, the system version is Android 6.0.1. The game developed by the Unity engine will pop up a "screen overlay detection" prompt dialog when applying for Android dangerous permissions. as the picture shows:
+
+![](/img/08_screenoverlay/01.png)
+
+In the face of such a clueless situation, Google Dafa is directly opened. According to the most online statement, according to the prompts, go to the Setting interface and close the app that can appear on other apps. Made, invalid. Where is the problem?
+
+![](/img/08_screenoverlay/02.png)
+
+During the test, the following conditions were found:
+
+* Devices with other models above 6.0+ do not have the same problem.
+* There is no problem with the native test app on this device.
+
+Inferred that the problem may be related to Untiy's Android project configuration. By troubleshooting, it is not surprising that you found the following configuration in AndroidManifest.xml:
+
+```shell
+<!--This configuration is related to the unity item. Set whether to skip the pop-up of the permission prompt box when the app starts (please ignore other items) -->
+        <meta-data
+            Android:name="unityplayer.SkipPermissionsDialog"
+            Android:value="true"/>
+```
+If the configuration is cancelled, the problem is gone. However, this does not meet the project requirements, as described in the code note above. If it is removed, the app will automatically apply for permission when it is launched, even if the current logic does not use the permission. Seriously affects the user experience, so it must be retained.
+
+At first I thought it was a problem with the unity5.6 version, but it also existed in the unity2018 test. Excluding the unity version problem, or at least the unity version switch, is not enough to avoid this problem. In the end, there is no way, just wondering why this "screen overlay detection" problem occurs. What is the root cause? Referring to the online statement, this prompt box is because there is a floating view on the screen to pop up when trying to modify the permissions. But my current screen does not have other app's floating window, such as 360's acceleration ball and other controls, it is crazy, and finally found that while the permissions dialog pops up, my application is constantly showing Toast The information requested by the ad in the application, the evil charm smiles, Toast is also a floating control?
+
+*** Turn off the switch in the application to control the display of Toast, the world is clean, Amen! ***
+
+Follow-up: As mentioned above, on the device, when running the native test application, the toast is displayed continuously, and the permission is applied at the same time, the dialog box of “screen overlay detection” will not pop up. It turned out that because the switch that controls whether toast is displayed is turned off by default, the pit is buried and it is also blamed for unity.
