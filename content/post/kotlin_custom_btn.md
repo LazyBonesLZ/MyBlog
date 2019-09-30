@@ -9,7 +9,7 @@ tags: [Android,Kotlin,自定义Button]
 ###  MainButton
 自定义button，可以在xml中设置点击效果，但是如果每个button都要按下效果的话，重复添加xml文件烦不胜烦，所以自定义一个MainButton,设置好Button的颜色后，按下效果是对其背景色加深处理，达到点击的效果，感觉世界一下清爽了许多。
 ### 效果预览
-![show.gif](https://upload-images.jianshu.io/upload_images/6174818-d351a2e0dfc91129.gif?imageMogr2/auto-orient/strip)
+![show.gif](/img/11_custom_btns/01.gif)
 
 ### 使用说明
 
@@ -51,55 +51,55 @@ implemention 'com.lazy.sdk:customviews:0.0.1'
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-   
+
 ```
 * 自定义参数说明
 
-  * app:mainBtnBgColor 
+  * app:mainBtnBgColor
 
   ```
   按钮背景色：#FFDE6D 或@color/colorRed
   ```
-  * app:mainBtnIcon 
+  * app:mainBtnIcon
 
   ```
   按钮图标："@mipmap/ic_launcher"，如果不需要，不设置该参数
   ```
-  * app:mainBtnIconRate 
+  * app:mainBtnIconRate
 
   ```
   按钮图标比例：float型，表示图标占整个按钮的几分之几，4.0 表示 1/4.0
   ```
-  * app:mainBtnRadius 
+  * app:mainBtnRadius
 
   ```
   按钮圆角弧度：单位dp
   ```
-  * app:mainBtnText 
+  * app:mainBtnText
 
   ```
   按钮title
   ```
-  * app:mainBtnTextSize 
+  * app:mainBtnTextSize
 
   ```
   按钮title字体大小：单位sp
   ```
-  * app:mainBtnTextColor 
+  * app:mainBtnTextColor
 
   ```
   按钮文本颜色：#FFDE6D 或者 @android:color/red
   ```
-  * app:mainBtnTextAlign 
+  * app:mainBtnTextAlign
 
   ```
   按钮文本对齐方式：
   left_bottom: 左下角对齐
   bottom：底部居中对齐
   right_bottom: 右下角对齐
-  center: 居中，在没有icon的情况设置该值 
+  center: 居中，在没有icon的情况设置该值
   ```
-  
+
 * 注意事项
 
   MainButton点击效果是对背景色做颜色加深处理，为了响应touch事件，需要设置OnClickListener才能生效。
@@ -107,7 +107,7 @@ implemention 'com.lazy.sdk:customviews:0.0.1'
 
   ```
   btnRect.setOnClickListener{
-  
+
   }
   ```
 

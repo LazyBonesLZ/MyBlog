@@ -26,11 +26,11 @@ hugo new site /xxx/xxx/xxx/BlogTest
 ```
 cd /xxx/xxx/xxx/BlogTest
 ```
-   
-  ![hugo_1_10.png](https://upload-images.jianshu.io/upload_images/6174818-9e836e723e83bb7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+  ![hugo_1_10.png](/img/10_hugo_server/09.png)
 
 * 打开刚才创建的目录，我们可以发现，hugo已经自动帮我们生成了很多文件，这些就是跟创建网站相关的资源。执行完`hugo new site xxx`命令其实是没有`public`文件夹，该目录是之后生成静态网站资源用以发布时产生的。
-![hugo_1_11.png](https://upload-images.jianshu.io/upload_images/6174818-9ec874da155b70c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![hugo_1_11.png](/img/10_hugo_server/10.png)
 
 * 接下来，依次执行下列命令行，详细解释参考注释。
 
@@ -56,14 +56,14 @@ hugo new post/firstblog.md
 open content/post
 ```
 * 编辑你的第一篇博客内容，跟普通的markdown风格文件操作一样。需要注意的地方如示例截图所示：
-![hugo_1_12.png](https://upload-images.jianshu.io/upload_images/6174818-450e80114b6c7c4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![hugo_1_12.png](/img/10_hugo_server/11.png)
 
 * 保存文本内容后，然后执行hugo提供的调试命令查看效果，检查博客文档效果是否生效：
 
-``` shell 
+``` shell
 hugo server -D
 
-# 然后在浏览器访问 
+# 然后在浏览器访问
 http://localhost:1313/
 ```
 
@@ -83,8 +83,8 @@ theme = "ananke"
 在完成Hugo网站配置文件后，直接执行`hugo`命令就可以生成`public` 文件夹下的静态网站资源内容。直接发布到服务器就完成了一个静态网站的部署。
 
   记得我们在第一篇提到，public下的内容会被push到GitHub做一个备份，然后服务器通过git 来抓取完成博客的更新。所以为了操作方便，我们把这一系列的操作写成可执行脚本，自动化。
-  
-  ``` shell 
+
+  ``` shell
   # cd  到项目根目录
   cd xx/xx/BlogTest
   # 新建脚本文件 deploy.sh
@@ -92,7 +92,7 @@ theme = "ananke"
   ```
   保存以下脚本内容：
 
-  ``` shell 
+  ``` shell
       echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
       # Build the project.
@@ -138,7 +138,7 @@ mkdir blog2
 cd blog2
 
 # git 初始化
-git init 
+git init
 git remote add origin https://github.com/LazyBonesLZ/LazyBonesLZ.github.io.git
 
 # 从 Github第一次抓取
@@ -159,7 +159,7 @@ vim git_pull.sh
 ```
 在脚本中保存以下内容：
 
-``` shell 
+``` shell
 cd /root/blog2
 git pull origin master
 exit 0
@@ -176,7 +176,7 @@ npm install github_webhook_handler
     vim github_webhook.js
   ```
   写入以下脚本内容：
-  
+
   ``` shell
   var http = require('http')
   var exec = require('child_process').exec
@@ -205,7 +205,7 @@ npm install github_webhook_handler
   })
   ```
    这个脚本利用的是Node.js的`child_process`模块来执行`shell`脚本。上面的`path: '/webhook'`你可以任意设置，`secret_key`验证为`myxxxxx`。我们在购买服务器的时候，安全组配置时添加了7777端口，所以端口用的是7777，你可以随意设置，总之不要过于明显，但是**要记得在阿里云控制台安全组添加端口**。这样下来最终的监听地址就是`http://0.0.0.0:7777/webhook`了，`0.0.0.0`表示该http服务监听本机的所有ip上收到的请求，说白了就是`0.0.0.0`可以换成服务器的ip或者指向服务器的所有域名。拿我自己的服务器作例子就是`http://blog.harddone.com:7777/webhook`。
-* ###pm2启动脚本 
+* ###pm2启动脚本
 我们用pm2来启动：`pm2 start github-webhook.js`，使用`pm2 startup`命令来设置脚本开机启动。pm2的更多高级用法还请查看[文档](http://pm2.keymetrics.io/docs/usage/quick-start/)。
 
 # 3. Nginx配置更新
@@ -254,7 +254,7 @@ cd /etc/nginx/conf.d/
 vim blog.conf
 ```
 
-``` shell 
+``` shell
 server {
 #    listen       80 default_server;
 #   listen       [::]:80 default_server;
@@ -271,7 +271,7 @@ server {
     }
 
     # NodeJS 将 Web 服务跑在了 7777 端口，我们可以用 Nginx 反向代理到 80 端口
-    location /webhook { 
+    location /webhook {
       alias /root/webhook;
       proxy_pass http://127.0.0.1:7777;  
     }
@@ -333,7 +333,7 @@ hugo new post/MySecondBlog.md
 ./deploy.sh
 # 执行完后，不出意外的话，服务器已经已经更新了！ 完美！
 
-# ------------------ 
+# ------------------
 # 这样就完了？ ～～
 # nooooo~~
 # 细心的你肯定已经发现，我们的脚本只是把网站相关的东西push到了xxx.github.io这个仓库
@@ -351,7 +351,7 @@ git push -u origin master
 
 后期计划：
 
-* ? 找个好看的网站主题吧？ 
+* ? 找个好看的网站主题吧？
 * ？把新赶的几篇稿子搬到自己的网站吧？
 * ？加个广告吧？！
 * ？加个https吧？！

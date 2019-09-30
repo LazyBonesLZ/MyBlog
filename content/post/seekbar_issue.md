@@ -9,26 +9,26 @@ tags: [Android,Seekbar,自定义进度条]
 项目需要自定义seekbar样式，记录一下这个过程中的问题和解决方案。
 UI设计样式如图：宽度填满父view
 
-![tmp4ddd6566.png](https://upload-images.jianshu.io/upload_images/6174818-fd13ec969ae73a52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![tmp4ddd6566.png](/img/12_seekbar/01.png)
 
 在实现的过程中出现过一些问题：
 
 1.thumb在滑动的过程中，出现了压缩
 
-![tmp47659cb3.png](https://upload-images.jianshu.io/upload_images/6174818-fb2552f76dddf0a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![tmp47659cb3.png](/img/12_seekbar/02.png)
 
 2.thumb在起点和终点只显示来一半
 
-![tmp6edf23a5.png](https://upload-images.jianshu.io/upload_images/6174818-8cb323146c1c3cd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![tmp6edf23a5.png](/img/12_seekbar/03.png)
 
 3.seekbar宽度并未填充满父view,而是在左右两侧保留了默认的间距。
 
-![tmp22ee10af.png](https://upload-images.jianshu.io/upload_images/6174818-25d62127527b6c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![tmp22ee10af.png](/img/12_seekbar/04.png)
 
 
 解决问题:
 *  由于thumb设置了“press”的效果，发现按下时的资源尺寸和正常时的尺寸不一样导致压缩。
-* 设置 
+* 设置
 
 ```
 android:thumbOffset="0dp"
@@ -65,7 +65,7 @@ android:paddingEnd="0dp"
 ```
 1.进度条的三层背景：`jz_bottom_seek_progress.xml`
 
-```shell 
+```shell
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
@@ -97,7 +97,7 @@ android:paddingEnd="0dp"
 ```
 2.thumb的背景：`jz_bottom_seek_thumb.xml`
 
-``` shell 
+``` shell
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/jz_seek_thumb_pressed" android:state_pressed="true" />
@@ -106,7 +106,7 @@ android:paddingEnd="0dp"
 ```
 3.thumb按下状态的背景：`jz_seek_thumb_pressed.xml`
 
-```shell 
+```shell
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
@@ -130,4 +130,3 @@ android:paddingEnd="0dp"
         android:color="#551CA5"/>
 </shape>
 ```
-

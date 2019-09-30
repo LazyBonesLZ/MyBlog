@@ -8,14 +8,14 @@ tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
 
 # 概述
 最近心血来潮想捣腾一下服务器方面的东西，一冲动在阿里云买了一台小小云服务器(HongKong)[(推荐链接)](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=lpl70fmt)（5年，算下来真是比买一个国外的VPS划算得太多，关键是响应速度超级完美，看图），想来搭个博文网站练（zhuang)练(zhuang)手(bi)，也是不错的。
-            ![hugo_1_2.png](https://upload-images.jianshu.io/upload_images/6174818-1d32ece02cdd0295.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+            ![hugo_1_2.png](/img/10_hugo_server/01.png)
 
 既然练练手，搭个小小的静态博文网站再合适不过了。接下来就是选择什么样的博客框架来的快。作为菜鸟中的战斗鸡，也就不用去对比wordpress, hexo,ghost这些框架了，查看大量的博文后觉得Hugo最适合自己，简单直接。
 
 既然想要捣腾服务器，就选nginx。咱也不太懂也不敢问，就是八百年前被赶鸭子上架接触一两天这个玩意儿，别的也不清楚。
 
 好了，画个示意图来描述一下要干事儿。
-![hugo_1_1.png](https://upload-images.jianshu.io/upload_images/6174818-833befed68fd3ff4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![hugo_1_1.png](/img/10_hugo_server/02.png)
 
 示意图解释：
 
@@ -39,9 +39,9 @@ tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
 ## 准备
 * 本地环境：
      * MacOS 10.14.2， 64位
-     * github 
+     * github
      * hugo
-     
+
 *  服务器环境：
      * CentOS 6.9， 64位 （因为某些特殊原因，购买服务器的时候特地选的centos6.+）
      * github
@@ -78,11 +78,11 @@ tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
 * 购买服务器
     * 选择基础配置,请注意地域是选择： `香港`
 
-      ![hugo_1_3.png](https://upload-images.jianshu.io/upload_images/6174818-d314ffd86d358ae9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+      ![hugo_1_3.png](/img/10_hugo_server/03.png)
     * 选择操作系统和存储空间：如果没有太多的空间需求，可以考虑稍微选择小一点，比如20G，还能省下不少钱。
-    ![hugo_1_4.png](https://upload-images.jianshu.io/upload_images/6174818-e7dbd4e6bc1c539c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    ![hugo_1_4.png](/img/10_hugo_server/04.png)
     * 网络：请注意我选择的是网络带宽是“按照使用流量”
-    ![hugo_1_5.png](https://upload-images.jianshu.io/upload_images/6174818-34848e5ef26233fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    ![hugo_1_5.png](/img/10_hugo_server/05.png)
     * 设置安全组：
 
       ```
@@ -90,9 +90,9 @@ tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
       第3步：添加的是监听 Github的 push event的service所在的端口:7777；
       第4步：0.0.0.0/0 表示授权接收所有ip的访问。
       ```
-      ![hugo_1_7.png](https://upload-images.jianshu.io/upload_images/6174818-ec87daab9b684e38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+      ![hugo_1_7.png](/img/10_hugo_server/06.png)
     * 配置登录用户名和密码，然后直接确认订单。付款。
-      ![hugo_1_8.png](https://upload-images.jianshu.io/upload_images/6174818-4cd81512371e8eb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+      ![hugo_1_8.png](/img/10_hugo_server/07.png)
     * 成功付款后，即可运行实例了。
 
 * SSH登录服务器
@@ -106,6 +106,6 @@ tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
   ```
    直接输入`yes`,表示同意。在终端输入正确的登录密码，完成ssh登录。
 
-     ![hugo_1_9.png](https://upload-images.jianshu.io/upload_images/6174818-4b7762a66fd98c37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+     ![hugo_1_9.png]/img/10_hugo_server/08.png)
 
 鉴于内容过多，服务器的环境配置我们放在下一篇继续。
