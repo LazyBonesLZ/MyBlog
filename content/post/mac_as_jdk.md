@@ -29,6 +29,36 @@ tags: [Android,Android Studio,Mac,JDK1.8,Gradle3.3]
 修改后：
 
 ```
-<key>JVMVersion</key> <string>1.8.0_121</string> 
+<key>JVMVersion</key> <string>1.8.0_121</string>
 #（这里的版本号根据实际安装的jdk版本来修改）
+```
+
+----
+English DOC
+----
+1. The project structure setting interface sets the jdk path to be jdk1.7 or above: `File->Project Structure->SDK Location`
+
+
+![](/img/05_mac_jdk/01.png)
+
+
+
+
+
+2. Modify the default jdk version of AS.
+(If it is a jdk1.8 version, you need to modify `/Application/Android Studio/Contents/info.plist`)
+
+How to find the path? `Android Studio.app -> Right click -> Show package contents`
+
+before fixing:
+
+```
+<key>JVMVersion</key> <string>1.6*,1.7+</string>
+
+```
+After modification:
+
+```
+<key>JVMVersion</key> <string>1.8.0_121</string>
+#(The version number here is modified according to the actual installed jdk version)
 ```

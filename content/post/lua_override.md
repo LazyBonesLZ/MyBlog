@@ -1,7 +1,7 @@
 ---
 title: "Lua 方法重载"
 date: 2019-04-18T10:01:05+08:00
-draft: false 
+draft: false
 categories: [Lua]
 tags: [Lua,override,方法重载]
 ---
@@ -28,4 +28,31 @@ end
 
 ```
 require "libii/common/OverrideShowBanner"
+```
+
+---
+English DOC
+---
+Recently, in updating a Lua project, many places call the same method. How do you implement the new method logic without changing the calling logic without changing the calling logic?
+We can override this method directly, but only if the ** is called before the first call to the method.
+
+```
+Please note the premise of this method: you must complete your overload before the method is called for the first time, otherwise it will be invalid.
+```
+
+For example: ads_plugin_manager is a global object. The logic of the method showBanner has been implemented in its class file. Many of the projects directly call ads_plugin_manager:showBanner(). Now I want to change the code of any place that calls this method. How to operate?
+
+* Create a lua file: OverrideAdsPluginManager.lua
+
+```shell
+ads_lua_manager.showBanner = function(...)
+--override start
+-- Please note that if the method implementation needs to access other methods or variables of the class, it can be called directly by ads_lua_manager.xxx
+-- override end
+End
+```
+* Import OverrideAdsPluginManager.lua as early as possible
+
+```
+Require "libii/common/OverrideShowBanner"
 ```
