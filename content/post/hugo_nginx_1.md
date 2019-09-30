@@ -106,6 +106,6 @@ tags: [Website,Nginx,CentOS,Github,Webhook,自动部署]
   ```
    直接输入`yes`,表示同意。在终端输入正确的登录密码，完成ssh登录。
 
-     ![hugo_1_9.png](/img/10_hugo_server/08.png)
+  ![hugo_1_9.png](/img/10_hugo_server/08.png)
 
 鉴于内容过多，服务器的环境配置我们放在下一篇继续。
