@@ -16,7 +16,7 @@ tags: [gradle,adb]
 
 想要实现`gradle task` 执行 `adb`, 可以通过执行`gradle`的 `Command Line`。参见[Exec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html#org.gradle.api.tasks.Exec)
 
-``` shell 
+``` shell
 task stopTomcat(type:Exec) {
   workingDir '../tomcat/bin'
 
@@ -47,7 +47,7 @@ task stopTomcat(type:Exec) {
 
 直接上脚本`copyobb.gradle`:
 
-```shell 
+```shell
 /**
  * How to use task: pushObb?
  * 1. open a terminal in Android Studio;
@@ -126,10 +126,137 @@ task pushObb(type: Exec,dependsOn:mkdirs) {
 
 ```shell
   ./gradlew -PobbPath="the obb file path on your mac which exported from unity" pushObb
- 
+
   [[For example]]:
   ./gradlew -PobbPath="/Users/ColorfulDark/tmp/BSG0030/BSG0030.main.obb" pushObb
- 
+
 ```
 
+---
+English DOC
+---
+I wrote an article about [python executing the adb command](https://www.harddone.com/post/python_adb/). The main function is to create a folder on the device and then upload the file to the created directory. The business requirement is to upload the obb file to the device, but to execute the python script, you need to pass in too many parameters: obb path, app package name, and version number. Too many parameters lead to inconvenience, and you forget it for a long time.
 
+Therefore, in the project directly use the gradle task to rewrite the work, so open the terminal directly in the anroid stuido, execute the task.
+The benefits of doing this are as follows:
+
+* Less incoming parameters: only need to pass obb local path on the development machine
+* No need for `python` environment
+
+To implement `gradle task` to execute `adb`, you can do this by executing `gradle` `Command Line`. See [Exec](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html#org.gradle.api.tasks.Exec)
+
+```shell
+Task stopTomcat(type:Exec) {
+  workingDir '../tomcat/bin'
+
+  //on windows:
+  commandLine 'cmd', '/c', 'stop.bat'
+
+  //on linux
+  commandLine './stop.sh'
+
+  //store the output instead of printing to the console:
+  standardOutput = new ByteArrayOutputStream()
+
+  //extension method stopTomcat.output() can be used to obtain the output:
+  Ext.output = {
+    Return standardOutput.toString()
+  }
+}
+```
+
+In theory, we can directly execute our previous `obb_push.py` script, but in the actual test process, the logic in the python script is actually multi-task execution, and the simple execution script can't get the correct result. Therefore, the task of the python script is decomposed into multiple `gradle task`s, and the corresponding `adb` commands are executed respectively.
+
+So the problems we need to solve are as follows:
+
+* gradle multitasking
+* gradle task order
+* gradle run adb
+* gradle task dynamic parameters are passed in
+
+Directly on the script `copyobb.gradle`:
+
+```shell
+/**
+ * How to use task: pushObb?
+ * 1. open a terminal in Android Studio;
+ * 2. input the command:
+ * ./gradlew -PobbPath="the obb file path on your mac which exported from unity" pushObb
+ *
+ * [[For example]]:
+ * ./gradlew -PobbPath="/Users/ColorfulDark/tmp/BSG0030/BSG0030.main.obb" pushObb
+ *
+ *
+ */
+
+Task mkdirs(type:Exec){
+    workingDir './'
+    String packageName = project.AppBundleId
+    Println 'get package name = ' + packageName
+
+    Println ' (1)================Preparing dirs...'
+    String obbDestPath = 'sdcard/Android/obb/' + packageName
+    commandLine 'adb', 'shell', 'mkdir', '-p', obbDestPath // recursively create a folder
+}
+
+/ / You must create a good target path on the device before you can push the file, so use dependsOn
+Task pushObb(type: Exec,dependsOn:mkdirs) {
+    workingDir './'
+    String packageName = project.AppBundleId
+    String version = project.AppVersionCode
+    String obbFilePath = project.hasProperty("obbPath") ? obbPath : null
+
+    Println ' (2)===============> parsing obb file name...'
+    If (obbFilePath == null || obbFilePath == "") {
+        Println 'you should input a obb file\'s path !'
+        Return
+    }
+
+    String[] obbSubDirs = obbFilePath.split('/')
+    String obbFileName = obbSubDirs[obbSubDirs.length - 1]
+
+    If (obbFileName == null || !obbFileName.contains('.obb')) {
+        Println 'can not find a obb file in the path !'
+        Return
+
+    } else
+        Println " " + obbFileName
+
+    Println ' (3)================ adb push obb file to device...'
+    String obbDestPath = 'sdcard/Android/obb/' + packageName
+    commandLine 'adb', 'push', obbFilePath.replace(' ', '\\ '), '/' + obbDestPath + '/'
+
+//You must wait until the upload is complete before you can perform the rename task
+    doLast {
+        Exec {
+            Println ' (4)================ adb rename obb file...'
+            String newObbFileName = "main." + version + "." + packageName + ".obb"
+            String oldFileFullPath = '/' + obbDestPath + '/' + obbFileName
+            String newFileFullPath = '/' + obbDestPath + '/' + newObbFileName
+            Println ' old name:' + oldFileFullPath
+            commandLine 'adb', 'shell', 'mv', oldFileFullPath, newFileFullPath
+            Println ' new name:' + newFileFullPath
+
+            Println ' (5)===============> Completed!!!'
+        }
+
+
+    }
+
+}
+
+```
+
+### How to use task: pushObb?
+
+* Add `apply from: 'copyobb.gradle'` in app level gradle.
+* Open a terminal in Android Studio;
+* Input the command and pass parameter with `-P`:
+
+```shell
+  ./gradlew -PobbPath="the obb file path on your mac which exported from unity" pushObb
+ 
+  [[For example]]:
+  ./gradlew -PobbPath="/Users/ColorfulDark/tmp/BSG0030/BSG0030.main.obb" pushObb
+ 
+```

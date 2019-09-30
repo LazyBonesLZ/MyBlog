@@ -27,5 +27,26 @@ git rm -r --cached <file or dir>
 将已经取消的文件或目录加到 `.gitignore`,
 然后将所有的改动提交仓库。
 
+---
+English DOC
+---
+If files and directories have already been submitted to the git repository, you can use the git command to untrack files and directories.
 
+Our commonly used sourcetree also provides this function. If there is already a file submitted in a directory, then you can't change the folder directly in the tool. You can only cancel the file with the changed one. UI The operation has to wait for the refresh, which is time consuming and laborious.
 
+To prevent misuse, first list the files that need to be tracked:
+
+```
+Git rm -r -n --cached <file or dir>
+
+# -r indicates recursion
+# -n means not deleting first, just listing files
+
+```
+After confirming the error, cancel the trace file or directory:
+
+```
+Git rm -r --cached <file or dir>
+```
+Add the canceled file or directory to `.gitignore`,
+Then submit all the changes to the repository.
