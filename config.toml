@@ -1,6 +1,6 @@
 baseURL = "http://www.harddone.com/"
 languageCode = "zh-CN"
-title = "ColofulDark Blog"
+title = "ColorfulDark Blog"
 theme = "maupassant"
 # 默认是70
 summaryLength = 140
