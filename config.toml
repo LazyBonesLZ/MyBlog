@@ -18,12 +18,12 @@ googleAnalytics = "UA-139304185-1"
 
 
 [author]
-  name = "ColofulDark"
+  name = "ColorfulDark"
 
 [params]
-  author = "ColofulDark"
+  author = "ColorfulDark"
   subtitle = "专注于Android、Java、Kotlin、移动互联网"
-  keywords = "ColofulDark,java,android,博客,python"
+  keywords = "ColorfulDark,java,android,博客,python"
   description = "专注于IT互联网，包括但不限于Java、Android、Python等"
 
   busuanzi = true
