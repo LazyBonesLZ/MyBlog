@@ -6,6 +6,121 @@ categories: [Android]
 tags: [Firebase,In-App Messaging not working]
 ---
 
+
+#### What is Firebase In-App Messaging?
+Official explanation:<!--more-->
+
+> Firebase In-App Messaging helps you engage your app's active users by sending them targeted, contextual messages that encourage them to use key app features. For example, you could send an in-app message to get users to subscribe, watch a video, Complete a level, or buy an item. You can customize messages as cards, banners, modals, or images, and set up triggers so that they appear exactly when they'd benefit your users most.
+Use Firebase In-App Messaging to encourage exploration and discovery: highlight a sale or coupon in your ecommerce app, give clues or tips in your game, or prompt a like or share in your social media app.
+
+#### Integration Firebase In-App Messaging
+It's amazing, it only needs to integrate sdk according to the official documentation, almost zero code.
+
+```shell
+Dependencies {
+    // ...
+
+    // Add the In-App Messaging and Analytics dependencies:
+    Implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.0'
+    Implementation 'com.google.firebase:firebase-analytics:17.2.0'
+
+    // Check that Firebase core is up-to-date:
+    Implementation 'com.google.firebase:firebase-core:17.2.0'
+}
+```
+
+After the preparation is completed, the specific implementation is based on our business needs. After comparing the default implementations such as firebase event triggering, we decide to implement it by the `triggerEvent` method provided by it. Because we used the Bata version of the test process, we found that if you use the default firebase event: such as `on_foreground`, etc. to trigger In-App Messaging, many behaviors are uncontrollable.
+
+However, a large number of test phenomena indicate that In-App Messaging could not be triggered when the app was first launched, although debug debugging has successfully called `triggerEvent`:
+
+```shell
+Public void inAppMsgTriggerEvent(String triggerEvent){
+        If (TextUtils.isEmpty(triggerEvent)) {
+            Log.e(TAG,"Trigger event can NOT be NULL");
+            Return;
+        }
+        registerFIAMListeners();
+        FirebaseInAppMessaging.getInstance().triggerEvent(triggerEvent);
+    }
+
+```
+#### analysis:
+In the initial stage, we thought it might be that sdk is still in beta and not very stable. However, after the app is resumed, it can trigger In-App Messaging very well. With a certain rule, you can't simply blame the sdk bug. Is there a problem with the code of our test demo? In Logcat, the `FIAM` keyword is used to filter and analyze the log output of In-App Messaging. After the app starts to enter MainAcitiy, it has the following output:
+>I/FIAM.Headless: Removing display event listener
+I/FIAM.Headless: Removing display event listener
+
+It has not been normal to remove some kind of event listener twice in succession. Go to the source to see if you can find the relevant ones.
+
+With Andorid Studio, in the `Project` mode, expand `External Libraries` and find the In-App Messaging SDK. Find the following method in `FirebaseInAppMessaging.class`:
+
+```shell
+@Keep
+    @KeepForSdk
+    Public void clearDisplayListener() {
+        Logging.logi("Removing display event listener");
+        This.listener = Maybe.empty();
+    }
+```
+Then after a human flesh search, find the call to `clearDisplayListener()` in `FirebaseInAppMessagingDisplay.class`.
+
+```shell
+ @Keep
+    Public void onActivityPaused(Activity activity) {
+        this.headlessInAppMessaging.clearDisplayListener();
+        this.imageLoader.cancelTag(activity.getClass());
+        this.removeDisplayedFiam(activity);
+        super.onActivityPaused(activity);
+    }
+
+    @Keep
+    Public void onActivityDestroyed(Activity activity) {
+        this.headlessInAppMessaging.clearDisplayListener();
+        this.imageLoader.cancelTag(activity.getClass());
+        this.removeDisplayedFiam(activity);
+        super.onActivityDestroyed(activity);
+    }
+
+
+```
+At this point, although we don't know the specific logic in the SDK, we can determine that the call to the method is related to the Activity lifecycle method in the app.
+
+Then first go to the demo project, view the declarations in the AndroidManifest.xml of each Activity, jump the situation. Found that the demo start activity is not MainActivity, but `WelcomeActivity`, in the `onCreate` method jump immediately after calling the `finish ()` method.
+
+```shell
+ @Override
+    Protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TLog.e(TAG,"activity on create call------");
+        Boolean bTestAds = AdsTools.isTestAds(this);
+        If (bTestAds){
+            Intent intent = new Intent(this,AdsUnitIDActivity.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this,NativeActivity.class);
+            startActivity(intent);
+        }
+
+       Finish();
+    }
+
+```
+This is what caused the strange log mentioned earlier to output twice. The last two solutions:
+
+* Comment out the `finish()` call directly;
+* Declare MainActivity as the launcher Activity.
+
+But why directly call the `finish()` method to close the previous Activity, In-App Messaging will start the `triggerEvent` invalidation every time the App starts, is it back to the conclusion that there is a problem inside the SDK? ? Waiting for the official explanation. . .
+### Update 2019-10-18
+Email from Google support:
+>Hi Tang,
+
+>I appreciate your feedback so I've filed a feature request to make in-app messaging persists even after an activity is finished. I can't guarantee any details as of this time. For now, I would suggest to keep an eye on our release notes for any Firebase related updates
+
+>Regards,
+Richard
+
+===中文===
+---
 #### 什么是Firebase In-App Messaging？
 官方解释：
 
@@ -109,111 +224,3 @@ I/FIAM.Headless: Removing display event listener
 * 将MainActivity声明为启动Activity.
 
 但是为什么直接调用`finish()`方法关闭掉前一个Activity后，In-App Messaging在App每次启动，就会出现`triggerEvent`失效的情况，是不是又回到了SDK内部有问题的结论了呢？等待官方解释。。。
-
----
-English DOC
----
-
-#### What is Firebase In-App Messaging?
-Official explanation:
-
-> Firebase In-App Messaging helps you engage your app's active users by sending them targeted, contextual messages that encourage them to use key app features. For example, you could send an in-app message to get users to subscribe, watch a video, Complete a level, or buy an item. You can customize messages as cards, banners, modals, or images, and set up triggers so that they appear exactly when they'd benefit your users most.
-Use Firebase In-App Messaging to encourage exploration and discovery: highlight a sale or coupon in your ecommerce app, give clues or tips in your game, or prompt a like or share in your social media app.
-
-#### Integration Firebase In-App Messaging
-It's amazing, it only needs to integrate sdk according to the official documentation, almost zero code.
-
-```shell
-Dependencies {
-    // ...
-
-    // Add the In-App Messaging and Analytics dependencies:
-    Implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.0'
-    Implementation 'com.google.firebase:firebase-analytics:17.2.0'
-
-    // Check that Firebase core is up-to-date:
-    Implementation 'com.google.firebase:firebase-core:17.2.0'
-}
-```
-
-After the preparation is completed, the specific implementation is based on our business needs. After comparing the default implementations such as firebase event triggering, we decide to implement it by the `triggerEvent` method provided by it. Because we used the Bata version of the test process, we found that if you use the default firebase event: such as `on_foreground`, etc. to trigger In-App Messaging, many behaviors are uncontrollable.
-
-However, a large number of test phenomena indicate that In-App Messaging could not be triggered when the app was first launched, although debug debugging has successfully called `triggerEvent`:
-
-```shell
-Public void inAppMsgTriggerEvent(String triggerEvent){
-        If (TextUtils.isEmpty(triggerEvent)) {
-            Log.e(TAG,"Trigger event can NOT be NULL");
-            Return;
-        }
-        registerFIAMListeners();
-        FirebaseInAppMessaging.getInstance().triggerEvent(triggerEvent);
-    }
-
-```
-#### analysis:
-In the initial stage, we thought it might be that sdk is still in beta and not very stable. However, after the app is resumed, it can trigger In-App Messaging very well. With a certain rule, you can't simply blame the sdk bug. Is there a problem with the code of our test demo? In Logcat, the `FIAM` keyword is used to filter and analyze the log output of In-App Messaging. After the app starts to enter MainAcitiy, it has the following output:
->I/FIAM.Headless: Removing display event listener
-I/FIAM.Headless: Removing display event listener
-
-It has not been normal to remove some kind of event listener twice in succession. Go to the source to see if you can find the relevant ones.
-
-With Andorid Studio, in the `Project` mode, expand `External Libraries` and find the In-App Messaging SDK. Find the following method in `FirebaseInAppMessaging.class`:
-
-```shell
-@Keep
-    @KeepForSdk
-    Public void clearDisplayListener() {
-        Logging.logi("Removing display event listener");
-        This.listener = Maybe.empty();
-    }
-```
-Then after a human flesh search, find the call to `clearDisplayListener()` in `FirebaseInAppMessagingDisplay.class`.
-
-```shell
- @Keep
-    Public void onActivityPaused(Activity activity) {
-        this.headlessInAppMessaging.clearDisplayListener();
-        this.imageLoader.cancelTag(activity.getClass());
-        this.removeDisplayedFiam(activity);
-        super.onActivityPaused(activity);
-    }
-
-    @Keep
-    Public void onActivityDestroyed(Activity activity) {
-        this.headlessInAppMessaging.clearDisplayListener();
-        this.imageLoader.cancelTag(activity.getClass());
-        this.removeDisplayedFiam(activity);
-        super.onActivityDestroyed(activity);
-    }
-
-
-```
-At this point, although we don't know the specific logic in the SDK, we can determine that the call to the method is related to the Activity lifecycle method in the app.
-
-Then first go to the demo project, view the declarations in the AndroidManifest.xml of each Activity, jump the situation. Found that the demo start activity is not MainActivity, but `WelcomeActivity`, in the `onCreate` method jump immediately after calling the `finish ()` method.
-
-```shell
- @Override
-    Protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        TLog.e(TAG,"activity on create call------");
-        Boolean bTestAds = AdsTools.isTestAds(this);
-        If (bTestAds){
-            Intent intent = new Intent(this,AdsUnitIDActivity.class);
-            startActivity(intent);
-        }else {
-            Intent intent = new Intent(this,NativeActivity.class);
-            startActivity(intent);
-        }
-
-       Finish();
-    }
-
-```
-This is what caused the strange log mentioned earlier to output twice. The last two solutions:
-
-* Comment out the `finish()` call directly;
-* Declare MainActivity as the launcher Activity.
-
-But why directly call the `finish()` method to close the previous Activity, In-App Messaging will start the `triggerEvent` invalidation every time the App starts, is it back to the conclusion that there is a problem inside the SDK? ? Waiting for the official explanation. . .

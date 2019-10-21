@@ -22,13 +22,13 @@ googleAnalytics = "UA-139304185-1"
 
 [params]
   author = "ColorfulDark"
-  subtitle = "专注于Android、Java、Kotlin、移动互联网"
+  subtitle = "Focus on Android,Java,Kotlin and Mobile Internet"
   keywords = "ColorfulDark,java,android,博客,python"
   description = "专注于IT互联网，包括但不限于Java、Android、Python等"
 
   busuanzi = true
   googleAd = "ca-pub-5294048051542592"
- 
+
 
   [[params.links]]
   title = "Suntabu Blog"
@@ -44,7 +44,7 @@ googleAnalytics = "UA-139304185-1"
   title = "CoderZh Blog"
   name = "CoderZh Blog"
   url = "https://blog.coderzh.com/"
-  
+
 
   [[params.ads]]
   title = "领取￥2000阿里云产品通用代金券"
@@ -75,12 +75,12 @@ googleAnalytics = "UA-139304185-1"
 
   [[menu.main]]
     identifier = "archives"
-    name = "归档"
+    name = "Archives"
     url = "/archives/"
     weight = 3
 
   [[menu.main]]
     identifier = "about"
-    name = "关于"
+    name = "About"
     url = "/about/"
     weight = 4

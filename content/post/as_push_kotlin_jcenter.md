@@ -1,11 +1,294 @@
 ---
-title: "Android Studio3.3.2 发布Kotlin项目到Jcenter"
+title: "Android Studio 3.3.2: Release Kotlin project to Jcenter"
 date: 2019-04-17T11:42:49+08:00
 draft: false
 categories: [Android]
 tags: [Android,Android Studio3.3.2,Kotlin,Push to JCenter]
 ---
 
+
+
+# Overview
+The paper is finally light.
+
+I always thought that publishing AAR to jcenter is very simple, and it should be no different from publishing to a private server nexus. I didn’t expect to know how many pits I had when I did it myself.<!--more-->
+
+This article will be recorded in Android Studio 3.3.2, how to upload aar to jcenter server developed with kotlin and the problems encountered. The reference is from [this blog post](https://www.open-open.com/lib/view/open1435109824278.html), which is very well written and introduces many basic concepts and release steps in detail.
+
+# Register Jcenter Personal Account
+
+Please note here, [Bintray's official website](https://bintray.com), please select "For an Open Source Account", [Registered Account](https://bintray.com/signup/oss).
+
+![](/img/01_jcenter/01.png)
+
+
+# create Repository and Package
+
+Take the project of this test as an example. I want to release a test Android SDK on Jcenter. The custom name is LazySDK. Currently, the SDK only contains one Sub-SDK package: customviews. This package is mainly used to package some daily projects. Commonly used views. So I can create a repository in Bintray and name it LazySDK, then create another package in the repository as customviews.
+
+* Step 1: Create Reprository:
+
+![](/img/01_jcenter/02.png)
+Click "Add New Repository"
+
+![](/img/01_jcenter/03.png)
+Enter the warehouse name, `Type`select "Maven"
+
+* Step 2: Create a Package
+
+Go to the reprository "LazySDK" created in the first step, create a new package, and then fill in the basic information such as Package name and save it:
+
+![](/img/01_jcenter/04.png)
+
+Click on "Add New Package"
+
+![](/img/01_jcenter/05.png)
+
+Supplement the required fields selected in the full screenshot, no other information
+
+
+# Configure Android Studio project
+
+Make sure there are no errors in the project before preparing for configuration. Take this test as an example: a LazySDK project is created locally, Kotlin is the development language, and the project depends on Module:customviews.
+
+![](/img/01_jcenter/06.png)
+
+
+
+
+The first step: configure the upload script
+
+(1) Configure dependencies in the project build.gradle file:
+
+```shell
+Dependencies {
+
+    Classpath 'com.android.tools.build:gradle:3.3.2'
+
+    Classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    Classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+
+    Classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+
+    Classpath 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18'
+
+}
+```
+
+(2) Created in the project directory: [jcenter_push.gradle](https://github.com/LazyBonesLZ/LazySDK/blob/master/jcenter_push.gradle)
+
+(3) Reference jcenter_push.gradle in library moudle builde.gradle, first configure the variable value needed by jcenter_push.gradle in ext. The purpose of this is to use the multiple modules in the future. Build.gradle defines the repository name and other information related to itself, and then share a jcenter_push.gradle. (unverified)
+
+```shell
+Ext {
+
+    bintrayRepo = 'LazySDK'
+
+    bintrayName = 'customviews'
+
+    publishedGroupId = 'com.lazy.sdk'
+
+    libraryName = 'customviews'
+
+    Artifact = 'customviews'
+
+    libraryDescription = 'Custom vies on Android'
+
+    siteUrl = 'https://github.com/LazyBonesLZ/LazySDK.git'
+
+    gitUrl = 'https://github.com/LazyBonesLZ/LazySDK.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'lazyboneslz'
+
+    developerName = 'TJL'
+
+    developerEmail = 'lazybonestjl@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+
+    allLicenses = ["Apache-2.0"]
+
+}
+
+Apply from: '../jcenter_push.gradle'
+
+```
+
+# install & upload
+
+(1) Execute `./gradlew install` to verify if there is a problem. If all goes well, you will see Build Successful.
+
+(2) Then execute: `./gradlew bintrayUpload`, if all goes well, you will see Build Successful
+
+# Add to Jcenter
+
+So far, the uploaded SDK has not been officially released to Jcenter, only in your own Bintray Maven repository. You can use the repository url in the project's `build.gradle`.
+
+```shell
+Repositories {
+
+     Maven{
+
+        Url 'https://dl.bintray.com/lazyboneslz/LazySDK/'
+
+      }
+
+        Google()
+
+        Jcenter()
+
+}
+```
+
+Then add `dependencies` in app build.gradle
+
+```shell
+Implementation com.lazy.sdk:customviews:0.0.1'
+```
+
+This way of referencing by configuring the repository url is not the best way. We can't have 10 repositories, just configure 10 URLs? So, you need to send sdk to the Jcenter server so that we don't have to configure a custom repository url.
+
+
+![](/img/01_jcenter/07.png)
+
+Click "Add to JCenter" directly
+ Then just click on "Send" and you don't have to fill in any information.
+![](/img/01_jcenter/08.png)
+
+
+
+Click send
+Then wait for the JCenter review, which usually takes a few hours. I sent it around 12 o'clock on the first day, but I didn't see it through the afternoon. The next day, I found that I have passed the work. I can directly reference the SDK uploaded by JCenter without configuring a custom repository url.
+![](/img/01_jcenter/09.png)
+
+
+
+After the review is approved, you will see that the icon has changed.
+#[Github source](https://github.com/LazyBonesLZ/LazySDK)
+
+# Marks
+
+This test did not automatically synchronize the content to maven central as in the blog post referenced, so GPG-related information was not configured.
+
+
+
+==================================================
+
+# encountered problems
+
+1. Javadoc generation failed. Generated Javadoc options file (useful for troubleshooting): 'xxx/javadoc/javadoc.options':
+
+This project is developed by kotlin and is configured as follows in the configuration:
+
+(1) Configure `dependencies` in the project build.gradle file:
+
+```shell
+Dependencies {
+
+   ........
+
+    Classpath 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18'
+
+}
+```
+(2) Add in `jcenter_push.gradle`:
+
+```shell
+If (project.hasProperty("kotlin")) {//Kotlin libraries
+
+    Task sourcesJar(type: Jar) {
+
+       Classifier = 'sources'
+
+        From android.sourceSets.main.java.srcDirs
+
+}
+
+Task javadoc(type: Javadoc,dependsOn: dokka) {
+
+}
+
+}else if (project.hasProperty("android")) {// Android libraries
+
+    Task sourcesJar(type: Jar) {
+
+Classifier = 'sources'
+
+        From android.sourceSets.main.java.srcDirs
+
+}
+
+Task javadoc(type: Javadoc) {
+
+Source = android.sourceSets.main.java.srcDirs
+
+Classpath +=project.files(android.getBootClasspath().join(File.pathSeparator))
+
+}
+
+}else {// Java libraries
+
+    Task sourcesJar(type: Jar,dependsOn: classes) {
+
+Classifier = 'sources'
+
+        fromsourceSets.main.allSource
+
+    }
+
+}
+
+/ / Solve kotlin javadoc.options wrong
+
+Dokka {
+
+outputFormat = 'html'
+
+    outputDirectory ="$buildDir/javadoc"
+
+}
+```
+
+2 . Unable to upload files: Maven group, artifact or version defined in the pom file do not match the file path 'xx/xxxxx.pom'
+
+This error has plagued me for a long time. I have various researches on the Internet. I found that most of the modules in the project must be the same as the artifactid. After I changed the instructions to the same, the problem still exists. I can't think of Qi. Finally, go to [https://github.com/bintray/gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin) to check and explain, and have not found any special attention. Later, I carefully compared the gradle of the official demo and found that it also declared the value of the group. I did the script in the blog post, but there was no related statement for the group. Finally, I added it and uploaded it perfectly.
+
+```shell
+Version = libraryVersion
+
+
+//important, if null, will issue: Maven group, artifact or version not match ...
+
+Group = publishedGroupId
+```
+
+3. Before the JCenter audit is passed, the configuration repository url fails to reference sdk. The reason is that the configured URL is incorrect. You cannot directly copy the Bintray repository address.
+
+```shell
+    Maven{
+
+       Url 'https://bintray.com/lazyboneslz/LazySDK/customviews'
+
+    }
+```
+
+The correct address is:
+
+```shell
+Maven{
+
+       Url 'https://dl.bintray.com/lazyboneslz/LazySDK/customviews'
+
+    }
+```
+
+===中文===
+---
 
 # 概述
 纸上得来终觉浅。
@@ -283,287 +566,4 @@ maven{
        url 'https://dl.bintray.com/lazyboneslz/LazySDK/customviews'
 
     }
-```
-
----
-English DOC
----
-
-# Overview
-The paper is finally light.
-
-I always thought that publishing AAR to jcenter is very simple, and it should be no different from publishing to a private server nexus. I didn’t expect to know how many pits I had when I did it myself.
-
-This article will be recorded in Android Studio 3.3.2, how to upload aar to jcenter server developed with kotlin and the problems encountered. The reference is from [this blog post](https://www.open-open.com/lib/view/open1435109824278.html), which is very well written and introduces many basic concepts and release steps in detail.
-
-# Register Jcenter Personal Account
-
-Please note here, [Bintray's official website](https://bintray.com), please select "For an Open Source Account", [Registered Account](https://bintray.com/signup/oss).
-
-![](/img/01_jcenter/01.png)
-
-
-# create Repository and Package
-
-Take the project of this test as an example. I want to release a test Android SDK on Jcenter. The custom name is LazySDK. Currently, the SDK only contains one Sub-SDK package: customviews. This package is mainly used to package some daily projects. Commonly used views. So I can create a repository in Bintray and name it LazySDK, then create another package in the repository as customviews.
-
-* Step 1: Create Reprository:
-
-![](/img/01_jcenter/02.png)
-Click "Add New Repository"
-
-![](/img/01_jcenter/03.png)
-Enter the warehouse name, `Type`select "Maven"
-
-* Step 2: Create a Package
-
-Go to the reprository "LazySDK" created in the first step, create a new package, and then fill in the basic information such as Package name and save it:
-
-![](/img/01_jcenter/04.png)
-
-Click on "Add New Package"
-
-![](/img/01_jcenter/05.png)
-
-Supplement the required fields selected in the full screenshot, no other information
-
-
-# Configure Android Studio project
-
-Make sure there are no errors in the project before preparing for configuration. Take this test as an example: a LazySDK project is created locally, Kotlin is the development language, and the project depends on Module:customviews.
-
-![](/img/01_jcenter/06.png)
-
-
-
-
-The first step: configure the upload script
-
-(1) Configure dependencies in the project build.gradle file:
-
-```shell
-Dependencies {
-
-    Classpath 'com.android.tools.build:gradle:3.3.2'
-
-    Classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-    Classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-
-    Classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-
-    Classpath 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18'
-
-}
-```
-
-(2) Created in the project directory: [jcenter_push.gradle](https://github.com/LazyBonesLZ/LazySDK/blob/master/jcenter_push.gradle)
-
-(3) Reference jcenter_push.gradle in library moudle builde.gradle, first configure the variable value needed by jcenter_push.gradle in ext. The purpose of this is to use the multiple modules in the future. Build.gradle defines the repository name and other information related to itself, and then share a jcenter_push.gradle. (unverified)
-
-```shell
-Ext {
-
-    bintrayRepo = 'LazySDK'
-
-    bintrayName = 'customviews'
-
-    publishedGroupId = 'com.lazy.sdk'
-
-    libraryName = 'customviews'
-
-    Artifact = 'customviews'
-
-    libraryDescription = 'Custom vies on Android'
-
-    siteUrl = 'https://github.com/LazyBonesLZ/LazySDK.git'
-
-    gitUrl = 'https://github.com/LazyBonesLZ/LazySDK.git'
-
-    libraryVersion = '0.0.1'
-
-    developerId = 'lazyboneslz'
-
-    developerName = 'TJL'
-
-    developerEmail = 'lazybonestjl@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-
-    allLicenses = ["Apache-2.0"]
-
-}
-
-Apply from: '../jcenter_push.gradle'
-
-```
-
-# install & upload
-
-(1) Execute `./gradlew install` to verify if there is a problem. If all goes well, you will see Build Successful.
-
-(2) Then execute: `./gradlew bintrayUpload`, if all goes well, you will see Build Successful
-
-# Add to Jcenter
-
-So far, the uploaded SDK has not been officially released to Jcenter, only in your own Bintray Maven repository. You can use the repository url in the project's `build.gradle`.
-
-```shell
-Repositories {
-
-     Maven{
-
-        Url 'https://dl.bintray.com/lazyboneslz/LazySDK/'
-
-      }
-
-        Google()
-
-        Jcenter()
-
-}
-```
-
-Then add `dependencies` in app build.gradle
-
-```shell
-Implementation com.lazy.sdk:customviews:0.0.1'
-```
-
-This way of referencing by configuring the repository url is not the best way. We can't have 10 repositories, just configure 10 URLs? So, you need to send sdk to the Jcenter server so that we don't have to configure a custom repository url.
-
-
-![](/img/01_jcenter/07.png)
-
-Click "Add to JCenter" directly
- Then just click on "Send" and you don't have to fill in any information.
-![](/img/01_jcenter/08.png)
-
-
-
-Click send
-Then wait for the JCenter review, which usually takes a few hours. I sent it around 12 o'clock on the first day, but I didn't see it through the afternoon. The next day, I found that I have passed the work. I can directly reference the SDK uploaded by JCenter without configuring a custom repository url.
-![](/img/01_jcenter/09.png)
-
-
-
-After the review is approved, you will see that the icon has changed.
-#[Github source](https://github.com/LazyBonesLZ/LazySDK)
-
-# Marks
-
-This test did not automatically synchronize the content to maven central as in the blog post referenced, so GPG-related information was not configured.
-
-
-
-==================================================
-
-# encountered problems
-
-1. Javadoc generation failed. Generated Javadoc options file (useful for troubleshooting): 'xxx/javadoc/javadoc.options':
-
-This project is developed by kotlin and is configured as follows in the configuration:
-
-(1) Configure `dependencies` in the project build.gradle file:
-
-```shell
-Dependencies {
-
-   ........
-
-    Classpath 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18'
-
-}
-```
-(2) Add in `jcenter_push.gradle`:
-
-```shell
-If (project.hasProperty("kotlin")) {//Kotlin libraries
-
-    Task sourcesJar(type: Jar) {
-
-       Classifier = 'sources'
-
-        From android.sourceSets.main.java.srcDirs
-
-}
-
-Task javadoc(type: Javadoc,dependsOn: dokka) {
-
-}
-
-}else if (project.hasProperty("android")) {// Android libraries
-
-    Task sourcesJar(type: Jar) {
-
-Classifier = 'sources'
-
-        From android.sourceSets.main.java.srcDirs
-
-}
-
-Task javadoc(type: Javadoc) {
-
-Source = android.sourceSets.main.java.srcDirs
-
-Classpath +=project.files(android.getBootClasspath().join(File.pathSeparator))
-
-}
-
-}else {// Java libraries
-
-    Task sourcesJar(type: Jar,dependsOn: classes) {
-
-Classifier = 'sources'
-
-        fromsourceSets.main.allSource
-
-    }
-
-}
-
-/ / Solve kotlin javadoc.options wrong
-
-Dokka {
-
-outputFormat = 'html'
-
-    outputDirectory ="$buildDir/javadoc"
-
-}
-```
-
-2 . Unable to upload files: Maven group, artifact or version defined in the pom file do not match the file path 'xx/xxxxx.pom'
-
-This error has plagued me for a long time. I have various researches on the Internet. I found that most of the modules in the project must be the same as the artifactid. After I changed the instructions to the same, the problem still exists. I can't think of Qi. Finally, go to [https://github.com/bintray/gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin) to check and explain, and have not found any special attention. Later, I carefully compared the gradle of the official demo and found that it also declared the value of the group. I did the script in the blog post, but there was no related statement for the group. Finally, I added it and uploaded it perfectly.
-
-```shell
-Version = libraryVersion
-
-
-//important, if null, will issue: Maven group, artifact or version not match ...
-
-Group = publishedGroupId
-```
-
-3. Before the JCenter audit is passed, the configuration repository url fails to reference sdk. The reason is that the configured URL is incorrect. You cannot directly copy the Bintray repository address.
-
-```shell
-    Maven{
-
-       Url 'https://bintray.com/lazyboneslz/LazySDK/customviews'
-
-    }
-```
-
-The correct address is:
-
-```shell
-Maven{
-
-       Url 'https://dl.bintray.com/lazyboneslz/LazySDK/customviews'
-
-    }
 ```
