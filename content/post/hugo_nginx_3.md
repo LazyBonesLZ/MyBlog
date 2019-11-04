@@ -205,7 +205,8 @@ npm install github_webhook_handler
   })
   ```
    这个脚本利用的是Node.js的`child_process`模块来执行`shell`脚本。上面的`path: '/webhook'`你可以任意设置，`secret_key`验证为`myxxxxx`。我们在购买服务器的时候，安全组配置时添加了7777端口，所以端口用的是7777，你可以随意设置，总之不要过于明显，但是**要记得在阿里云控制台安全组添加端口**。这样下来最终的监听地址就是`http://0.0.0.0:7777/webhook`了，`0.0.0.0`表示该http服务监听本机的所有ip上收到的请求，说白了就是`0.0.0.0`可以换成服务器的ip或者指向服务器的所有域名。拿我自己的服务器作例子就是`http://blog.harddone.com:7777/webhook`。
-* ###pm2启动脚本
+
+* ### pm2启动脚本
 我们用pm2来启动：`pm2 start github-webhook.js`，使用`pm2 startup`命令来设置脚本开机启动。pm2的更多高级用法还请查看[文档](http://pm2.keymetrics.io/docs/usage/quick-start/)。
 
 # 3. Nginx配置更新
