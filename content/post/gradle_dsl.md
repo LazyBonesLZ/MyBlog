@@ -14,4 +14,4 @@ Some misoperations lead to errors `Could not find method classpath()` when compl
 
 Please double check if the project level `build.gradle` is correct. Pay attention to that: the node `dependencies` should be included in `buildscript`.
 
- This is my case, maybe there are other case, hope this can help you.
+This is my case, maybe there are other case, hope this can help you.

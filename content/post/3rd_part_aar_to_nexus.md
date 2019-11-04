@@ -1,5 +1,5 @@
 ---
-title: "Nexus:Upload AAR files manully"
+title: "Nexus:Upload AAR files Manully"
 date: 2019-09-18T13:57:06+08:00
 draft: false
 categories: [Android]
