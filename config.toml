@@ -9,6 +9,7 @@ hasCJKLanguage = true
 preserveTaxonomyNames = true
 ## 是否禁止URL Path转小写
 disablePathToLower = true
+disqusShortname = "yourdiscussshortname"
 
 googleAnalytics = "UA-139304185-1"
 
