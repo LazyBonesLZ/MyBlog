@@ -9,7 +9,6 @@ hasCJKLanguage = true
 preserveTaxonomyNames = true
 ## 是否禁止URL Path转小写
 disablePathToLower = true
-disqusShortname = "yourdiscussshortname"
 
 googleAnalytics = "UA-139304185-1"
 
@@ -62,8 +61,8 @@ googleAnalytics = "UA-139304185-1"
 
   [params.utteranc]
     enable = true
-    repo = ""    # 存储评论的Repo，格式为 owner/repo
-    issueTerm = "pathname"  #表示你选择以那种方式让github issue的评论和你的文章关联。
+    repo = "LazyBonesLZ/BlogComments"    # 存储评论的Repo，格式为 owner/repo
+    issueTerm = "BlogComments"  #表示你选择以那种方式让github issue的评论和你的文章关联。
     theme = "github-light" # 样式主题，有github-light和github-dark两种
 
 [menu]
