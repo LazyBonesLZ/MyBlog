@@ -3,6 +3,7 @@ title: "Unity ScreenCapture"
 date: 2020-04-23T15:01:15+08:00
 draft: false
 categories: [Unity]
+tags: [Unity,Editor Screenshot,截屏]
 ---
 
 我发现为iOS应用商店提供屏幕截图非常耗时，因为它们必须具有iOS设备分辨率。 在所有设备上构建和运行，截屏并上传需要花费大量时间。
