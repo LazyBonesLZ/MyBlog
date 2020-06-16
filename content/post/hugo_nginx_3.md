@@ -315,9 +315,10 @@ user root;
  到目前为止，我们已经完成了90%的工作。但是，我们还不能简单的完成自动化部署。为啥呢？因为Github的webhook功能还没激活呢。
 
   登录Github,进入` LazyBonesLZ.github.io`仓库，点击`Setting`
-   ![hugo_1_13.png](https://upload-images.jianshu.io/upload_images/6174818-e4006dbc137bcb31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  
+![hugo_1_13.png](/img/10_hugo_server/11.png)
 
-![hugo_1_14.png](https://upload-images.jianshu.io/upload_images/6174818-ce1e30f0be9a18b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![hugo_1_14.png](/img/10_hugo_server/12.png)
 
 注意事项：
 
