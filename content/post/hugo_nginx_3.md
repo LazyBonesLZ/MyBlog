@@ -205,7 +205,10 @@ exit 0
       });
   })
   ```
-   这个脚本利用的是Node.js的`child_process`模块来执行`shell`脚本。上面的`path: '/webhook'`你可以任意设置，`secret_key`验证为`myxxxxx`。我们在购买服务器的时候，安全组配置时添加了7777端口，所以端口用的是7777，你可以随意设置，总之不要过于明显，但是**要记得在阿里云控制台安全组添加端口**。这样下来最终的监听地址就是`http://0.0.0.0:7777/webhook`了，`0.0.0.0`表示该http服务监听本机的所有ip上收到的请求，说白了就是`0.0.0.0`可以换成服务器的ip或者指向服务器的所有域名。拿我自己的服务器作例子就是`http://blog.harddone.com:7777/webhook`。
+   这个脚本利用的是Node.js的`child_process`模块来执行`shell`脚本。对上述代码简要说明：
+   * `path: '/webhook'`：你可以任意设置；
+   * `secret_key`：`myxxxxx`，设置github webhooks时需要用到。
+   * `7777`:为监听的端口号。你可以随意设置，但是**要记得在阿里云控制台安全组添加端口**。最终实际路径是`http://0.0.0.0:7777/webhook`，`0.0.0.0`表示该http服务监听本机的所有ip上收到的请求，说白了就是`0.0.0.0`可以换成服务器的ip或者指向服务器的所有域名。拿我自己的服务器作例子就是`http://blog.harddone.com:7777/webhook`。
 
 * ### pm2启动脚本
 
@@ -318,10 +321,13 @@ user root;
 注意事项：
 
 ``` shell
-第2步：'webhook'即 ‘github_webhook.js’ 中配置的path
+第2步：'webhook'即 ‘github_webhook.js’ 中配置的path，如果你配置了cloundflare代理来实现https请求，那这里最好设置成`http://[ip]:[port]/webhook`
+
 第3步：必须选择‘application/json’,否则不起作用
+
 第4步：‘Secret’即 ‘github_webhook.js’中配置的‘ secret_key’
 一定要和脚本中设置一致，否则，你懂的！
+
 ```
 
 好了，到目前为止，配置工作都已完成。
