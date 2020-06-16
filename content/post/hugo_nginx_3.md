@@ -167,7 +167,7 @@ exit 0
 ### 2.2 github_webhook.js脚本
 * 我们需要用到nodejs来监听来自GitHub的消息，需要用到中间件 [github_webhook_handler](https://github.com/rvagg/github-webhook-handler), 我们使用npm 来安装：
 ```
-npm install github_webhook_handler
+npm install github-webhook-handler
 ```
 * 新建`github_webhook.js`脚本
 该脚本主要参考[https://www.xxxlbox.com/posts/2018/hugo-deployment-webhook/](https://www.xxxlbox.com/posts/2018/hugo-deployment-webhook/)，但是我们用到是GitHub仓库而非Gitlab,所以做了细微改动。
