@@ -206,6 +206,7 @@ exit 0
   })
   ```
    这个脚本利用的是Node.js的`child_process`模块来执行`shell`脚本。对上述代码简要说明：
+   
    * `path: '/webhook'`：你可以任意设置；
    * `secret_key`：`myxxxxx`，设置github webhooks时需要用到。
    * `7777`:为监听的端口号。你可以随意设置，但是**要记得在阿里云控制台安全组添加端口**。最终实际路径是`http://0.0.0.0:7777/webhook`，`0.0.0.0`表示该http服务监听本机的所有ip上收到的请求，说白了就是`0.0.0.0`可以换成服务器的ip或者指向服务器的所有域名。拿我自己的服务器作例子就是`http://blog.harddone.com:7777/webhook`。
