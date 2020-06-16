@@ -316,9 +316,9 @@ user root;
 
   登录Github,进入` LazyBonesLZ.github.io`仓库，点击`Setting`
   
-![hugo_1_13.png](/img/10_hugo_server/11.png)
+![hugo_1_13.png](/img/10_hugo_server/12.png)
 
-![hugo_1_14.png](/img/10_hugo_server/12.png)
+![hugo_1_14.png](/img/10_hugo_server/13.png)
 
 注意事项：
 
