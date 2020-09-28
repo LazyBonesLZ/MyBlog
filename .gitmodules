@@ -2,6 +2,6 @@
 	path = public
 	url = https://github.com/LazyBonesLZ/LazyBonesLZ.github.io.git
 	branch = master
-[submodule "themes/hugo-theme-cleanwhite"]
-	path = themes/hugo-theme-cleanwhite
-	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
+[submodule "themes/maupassant"]
+	path = themes/maupassant
+	url = https://github.com/LazyBonesLZ/maupassant-hugo.git
