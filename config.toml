@@ -15,6 +15,10 @@ googleAnalytics = "UA-139304185-1"
 [taxonomies]
   category = "categories"
   tag = "tags"
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = "github"
 
 
 [author]
