@@ -8,7 +8,7 @@ hasCJKLanguage = true
 ## 保持分类的原始名字（false会做转小写处理）
 preserveTaxonomyNames = true
 ## 是否禁止URL Path转小写
-disablePathToLower = false
+disablePathToLower = true
 
 googleAnalytics = "UA-139304185-1"
 
@@ -18,7 +18,7 @@ googleAnalytics = "UA-139304185-1"
 [markup]
   [markup.highlight]
     lineNos = true
-    style = "github"
+    style = "monokai"
 
 
 [author]
