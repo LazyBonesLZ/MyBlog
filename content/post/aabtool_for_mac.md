@@ -1,5 +1,5 @@
 ---
-title: "Android app bundle tool for Mac121"
+title: "Android app bundle tool for Mac"
 date: 2020-05-22T10:14:27+08:00
 draft: false
 categories: [Python]
