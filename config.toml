@@ -17,8 +17,17 @@ googleAnalytics = "UA-139304185-1"
   tag = "tags"
 [markup]
   [markup.highlight]
-    lineNos = true
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
     style = "monokai"
+    tabWidth = 4
 
 
 [author]
