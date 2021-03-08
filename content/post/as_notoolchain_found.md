@@ -4,35 +4,7 @@ date: 2019-06-14T16:27:33+08:00
 draft: false
 categories: [Android]
 tags: [Android Studio,No toolchains found,mips64el-linux-android]
----
 
-Recently, the demand for new projects may use the scanning and reading function of the ID card. I will study the OCR interface provided by Baidu in advance, and download the official demo to import Android Studio and report an error:<!--more-->
- ```
- No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
- ```
- Suddenly it was forced. What is wrong with this? In the absence of the start, I had to open Google Dafa.
-
-Because the locally installed AS version is 3.2, but the Baidu demo is configured with gradle 2.2.3.
-
-  ``` shell
-  dependencies {
-      classpath 'com.android.tools.build:gradle:2.2.3'
-
-  }
-  ```
-  The most straightforward solution is to change to gradle3.2.1
-
-  ``` shell
-  dependencies {
-      classpath 'com.android.tools.build:gradle:3.2.1'
-
-  }
-  ```
-
-Simply record as a development experience. The most fundamental reason should be caused by the incomplete installation of the toolchain in the local ndk-bundle. . . Detailed analysis and solutions：[Click me!!](https://medium.com/@ivancse.58/how-to-resolve-no-toolchains-found-in-the-ndk-toolchains-folder-for-abi-with-prefix-b37086380193)
-
-===中文===
----
 最近新项目需求可能用到身份证的扫描读取功能，就提前研究一下百度提供的OCR接口，下载官方demo导入Android studio后居然报错：
 ```
 No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android

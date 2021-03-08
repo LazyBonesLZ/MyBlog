@@ -5,41 +5,7 @@ draft: false
 categories: [Unity]
 tags: [Android Studio,Unity-Lua,Apk大小]
 
----
 
-
-
-# background
-Due to my non-professional game developers, this article does not discuss how to professionally deal with game resources and project configuration to reduce the size of the installation package. Just record how to reduce the apk when packaging.<!--more-->
-
-Unity project, Lua develops subgame logic. How to use Lua development in Unity does not expand the instructions, I will not. The background of the problem is that the boss asked us to publish the sub-app developed by Lua as a separate application, so the title is actually changed to "How does the Unity-lua project further reduce the apk size?"
-
-Students who are familiar with this type of development should know that lua logic can run smoothly, and the game scene should have a good assetbundle resource. This is the key to how we can further reduce the size when packaging apk. If there are multiple scenes in the project, when exporting the Android studio project in the untiy editor, you only need to export the first scene. In this way, the remaining game scenes do not need to be repeatedly compiled into resources, and can be loaded directly from the assetbundle through lua logic.
-
-# for example
-
-Project A has only two scenarios: LaunchScene and MainScene; To successfully publish the lua project, the first startup scenario needs to complete the loading of all assetbundle and lua resources and the display of the loaded animation, so the first scene must be exported; The loading of the scene is controlled by the logic of lua after that, and the resources are of course obtained from the pre-loaded assetbundle.
-
-If we export, we have checked all the scenes:
-
-![](/img/06_unity_apk/01.png)
-
-By decompressing apk we can see:
-
-![](/img/06_unity_apk/02.png)
-
-`level0 ` and `level1` correspond to two scenes respectively, corresponding to `sharedassets0.assets` and `sharedassets1.assets` files. The screenshots are stored in the form of `sharedassetsXXX.assets.splitXXX`. These are unity. The resources associated with the scene are very large. The impact on the size of the apk is very obvious.
-
-When we don't check the MainScene export,
-
-![](/img/06_unity_apk/03.png)
-
-Unzip the files with the names `sharedassets1.asstes.splitXXX` and `level1`, and the apk is reduced by nearly 15M.
-
-This article only records, please explain the wrong place. I hope it will help you reduce your apk.
-
-===中文===
----
 
 # 问题背景
 由于本人非专业游戏开发者，本文不讨论如何专业的处理游戏资源和工程配置来减小安装包大小问题。只简单记录一下如何在打包时减小apk。

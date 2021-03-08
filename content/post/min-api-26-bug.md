@@ -4,29 +4,7 @@ date: 2019-09-18T16:41:39+08:00
 draft: false
 categories: [Android]
 tags: [Android Studio 3.5,Invoke-customs]
----
 
-Android Studio upgrade to 3.5, the project has an error during compilation<!--more-->
-```
-  Invoke-customs are only supported starting with android 0 --min-api 26
-```
-
-  Solution:
- ``` shell
-   Android{
-   //...
-   compileOptions {
-          sourceCompatibility JavaVersion.VERSION_1_8
-          targetCompatibility JavaVersion.VERSION_1_8
-      }
-   //...
-   }
- ```
-
-  JavaVersion is based on the actual version settings in your development environment.
-
-===中文===
----
 
  Android Studio升级到3.5，工程在编译时出现错误：
 

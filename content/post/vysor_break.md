@@ -50,7 +50,6 @@ vysor是什么？官方描述翻译过来是：Vysor把你的Android界面投影
 
 ## 开始破解 
 * 详细步骤，请参考[https://blog.csdn.net/qq_32175491/article/details/82758381#_37](https://blog.csdn.net/qq_32175491/article/details/82758381#_37)
-
 * 打开`uglify.js`
 	
 	需要注意的是，按照上述文档可能查不到Vysor ID，摸索了一番，发现其ID应该是固定的， 以`gidgen`开始，以`ffefm `结尾的md5字符串？比如：`gidgenxxxxxxxxxxxxxxxxffefm `
