@@ -4,6 +4,7 @@ date: 2019-06-14T16:27:33+08:00
 draft: false
 categories: [Android]
 tags: [Android Studio,No toolchains found,mips64el-linux-android]
+---
 
 最近新项目需求可能用到身份证的扫描读取功能，就提前研究一下百度提供的OCR接口，下载官方demo导入Android studio后居然报错：
 ```

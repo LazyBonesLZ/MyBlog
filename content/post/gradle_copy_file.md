@@ -4,6 +4,7 @@ date: 2019-08-16T10:59:48+08:00
 draft: false
 categories: [Android]
 tags: [Gradle,Copy File]
+---
 
 Android Studio 在Build工程之前，如果要将一些应用必须的配置文件拷贝到assets目录下，可以自定义task,在build之前先执行。<!--more-->
 

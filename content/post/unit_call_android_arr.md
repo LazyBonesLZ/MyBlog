@@ -4,6 +4,7 @@ date: 2018-07-11T01:59:34+08:00
 draft: false
 categories: [Android]
 tags: [Android,Unity,Method,Array Params,参数,数组]
+---
 
 
 Unity开发过程中，如果要调用Android端的java方法，恰巧该方法的参数是可变参数或者数组，使用unity的AndroidJavaObject提供的call方法直接传递c#数组，是需要对数组参数做一下处理。举例说明：

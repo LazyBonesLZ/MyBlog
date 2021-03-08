@@ -4,6 +4,7 @@ date: 2019-09-24T15:34:44+08:00
 draft: false
 categories: [Android]
 tags: [Placeholders,Main module,Library module]
+---
 
 
 Android Studio 工程有多个module组成，相互工程依赖。最常见的方式是app moudule 依赖于 library module。如果所依赖的library module 最终还会作为一个公共SDK供其他项目使用的话，而内部用到的一些又需要根据具体项目配置的不同值时，就需要在library moudule的`AndroidManifest.xml`中使用manifest placehodlers占位符。

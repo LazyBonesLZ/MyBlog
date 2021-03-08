@@ -4,6 +4,7 @@ date: 2019-09-18T16:57:37+08:00
 draft: false
 categories: [Android]
 tags: [gradle,adb]
+---
 
 
 之前写过一篇关于[python执行adb命令的文章](https://www.harddone.com/post/python_adb/),主要功能是在设备上创建文件夹，然后向创建的目录下上传文件。业务需求是上传obb文件到设备上，但是执行该python脚本，需要传入太多的参数：obb路径，app package name, 以及版本号等等。参数过多导致使用不便，且时间久了自己也就忘了。

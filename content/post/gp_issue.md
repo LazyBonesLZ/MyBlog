@@ -4,6 +4,7 @@ date: 2019-05-13T11:02:03+08:00
 draft: fasle
 categories: [Android]
 tags: [google iap,无法购买]
+---
 
 
 Google IAP一直是项目测试组的噩梦。各种莫名其妙的无法购买，每当项目已更新，涉及IAP的测试都会要去梳理一遍代码逻辑，结果大多数情况都是非代码逻辑导致。

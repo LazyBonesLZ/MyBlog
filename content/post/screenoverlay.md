@@ -4,7 +4,7 @@ date: 2019-08-08T09:15:12+08:00
 draft: false
 categories: [Android]
 tags: [Android,Unity3d,屏幕重叠层检测,Screen Overlay Deteched]
-
+---
 
 闲话少说，直接来看问题。
 在三星平板T710设备上，系统版本为Android 6.0.1。Unity引擎开发的游戏在申请Android危险权限时，会弹出“屏幕重叠层检测”的提示对话框。如图所示：

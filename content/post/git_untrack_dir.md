@@ -4,6 +4,7 @@ date: 2019-04-30T14:33:57+08:00
 draft: false
 categories: [Git]
 tags: [git,取消跟踪,文件目录]
+---
 
 
 如果文件和目录已经被提交到git仓库，是可以通过git 命令来取消文件和目录的跟踪。

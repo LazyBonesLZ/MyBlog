@@ -4,6 +4,7 @@ date: 2018-08-13T16:14:33+08:00
 draft: false
 categories: [Android]
 tags: [Android,Https,证书验证失败,Certificate verification failed]
+---
 
 项目中一直有https的请求，没有用到第三方的SDK,都是使用HttpUrlConnec tion去实现的请求。一直相安无事，突然测试人员报告说出现证书验证问题。网上各种查看资料解决，方案无非是加入自定义证书到工程或者是用信任所有证书的方式解决。但是，我们并没有用到自定义证书，如果用信任所有证书的方式，对于自身app的安全又无法保障了。
 

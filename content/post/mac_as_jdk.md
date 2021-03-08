@@ -4,6 +4,7 @@ date: 2017-11-12T16:45:46+08:00
 draft: false
 categories: [Android]
 tags: [Android,Android Studio,Mac,JDK1.8,Gradle3.3]
+---
 
 
 1.project structure设置界面中设置jdk路径是jdk1.7或以上的版本:`File->Project Structure->SDK Location`
