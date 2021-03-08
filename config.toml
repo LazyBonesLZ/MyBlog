@@ -1,4 +1,4 @@
-baseURL = "http://www.harddone.com/"
+baseURL = "https://lazyboneslz.github.io/"
 languageCode = "zh-CN"
 title = "ColorfulDark Blog"
 theme = "maupassant"
