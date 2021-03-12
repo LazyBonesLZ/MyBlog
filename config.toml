@@ -27,7 +27,7 @@ googleAnalytics = "UA-139304185-1"
     lineNumbersInTable = true
     noClasses = true
     style = "monokai"
-    tabWidth = 4
+    tabWidth = 10
 
 
 [author]
@@ -41,6 +41,13 @@ googleAnalytics = "UA-139304185-1"
 
   busuanzi = true
   googleAd = "ca-pub-5294048051542592"
+
+  #图片点击放大
+  fancybox = true
+  #图片cdn
+  [params.image_cdn]
+    enable = true
+    Host = "https://cdn.jsdelivr.net/gh/lazyboneslz/lazyboneslz.github.io"
 
 
   [[params.links]]
