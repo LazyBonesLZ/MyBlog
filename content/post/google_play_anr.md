@@ -19,9 +19,26 @@ tags: [Google play console, Android vitals, ANR]
 
 ### 1.[StrictMode](https://developer.android.com/reference/android/os/StrictMode)
 
-   StrictMode是一个开发人员工具，可以检测到您可能偶然执行的操作并将其引起您的注意，以便您可以进行修复。 在应用上线之前，开启改模式可以帮助开发人员找到一些可能引起ANR的问题代码：比如在主线程上调用第三方sdk的网络请求接口、主线程上有耗时计算的逻辑或者在BroadcastRecevier中有耗时的计算等等。
+StrictMode是一个开发人员工具，可以检测到您可能偶然执行的操作并将其引起您的注意，以便您可以进行修复。 在应用上线之前，开启改模式可以帮助开发人员找到一些可能引起ANR的问题代码：比如在主线程上调用第三方sdk的网络请求接口、主线程上有耗时计算的逻辑或者在BroadcastRecevier中有耗时的计算等等。
 
-   所以，在开发阶段，我们可以尽可能的早的开启StrictMode. 在Application 或者 Activity的onCreate方法中均可，但是需要注意的是，通过测试发现，如果是在Application开启StrictMode,可能导致无法检测到某些自定义的耗时逻辑：[点我看这里](https://stackoverflow.com/questions/23997448/why-setting-up-strictmode-not-working-in-application-without-handler)
+StrictMode主要检测两大问题，一个是线程策略，即TreadPolicy，另一个是VM策略，即VmPolicy。
+#### ThreadPolicy线程策略检测
+
+* 自定义的耗时调用 使用detectCustomSlowCalls()开启
+* 磁盘读取操作 使用detectDiskReads()开启
+* 磁盘写入操作 使用detectDiskWrites()开启
+* 网络操作 使用detectNetwork()开启
+
+#### VmPolicy虚拟机策略检测
+
+ * Activity泄露 使用detectActivityLeaks()开启
+ * 未关闭的Closable对象泄露 使用detectLeakedClosableObjects()开启
+ * 泄露的Sqlite对象 使用detectLeakedSqlLiteObjects()开启
+ * 检测实例数量 使用setClassInstanceLimit()开启
+
+
+所以，在开发阶段，我们可以尽可能的早的开启StrictMode. 在Application 或者 Activity的onCreate方法中均可，但是需要注意的是，通过测试发现，如果是在Application开启StrictMode,可能导致无法检测到某些自定义的耗时逻辑：
+   [点我看这里](https://stackoverflow.com/questions/23997448/why-setting-up-strictmode-not-working-in-application-without-handler)
 
    ```shell
 
@@ -50,6 +67,10 @@ tags: [Google play console, Android vitals, ANR]
 
    分析StrictMode log,主要是查看网络请求或者I/O操作等是否在主线程上，如果是的话就要优化自己的代码。
 
+   ```shell
+   adb logcat | grep StrictMode
+   ```
+
    但是要注意的是：
 
    * 只在开发阶段启用StrictMode，发布应用或者release版本一定要禁用它。
@@ -68,3 +89,4 @@ tags: [Google play console, Android vitals, ANR]
  newSingleThreadExecutor: [https://www.cnblogs.com/zhujiabin/p/5404771.html](https://www.cnblogs.com/zhujiabin/p/5404771.html)
  3. StrictMode: [https://developer.android.com/reference/android/os/StrictMode](https://developer.android.com/reference/android/os/StrictMode)
  4. ANR: [https://developer.android.com/topic/performance/vitals/anr.html](https://developer.android.com/topic/performance/vitals/anr.html)
+ 5. Android严苛模式StrictMode使用详解 [https://blog.csdn.net/mynameishuangshuai/article/details/51742375](https://blog.csdn.net/mynameishuangshuai/article/details/51742375)
