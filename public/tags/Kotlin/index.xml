@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kotlin on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Kotlin/</link>
+    <description>Recent content in Kotlin on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 19 Apr 2019 11:10:07 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin 自定义带点击效果的Button</title>
+      <link>https://www.harddone.com/post/kotlin_custom_btn/</link>
+      <pubDate>Fri, 19 Apr 2019 11:10:07 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/kotlin_custom_btn/</guid>
+      <description>MainButton 自定义button，可以在xml中设置点击效果，但是如果每个button都要按下效果的话，重复添加xml文件烦不胜烦，所以自定义一个MainButton,设置好Button的颜色后，按下效果是对其背景色加深处理，达到点击的效果，感觉世界一下清爽了许多。 效果预览 使用说明 添加依赖 implemention</description>
+    </item>
+    
+    <item>
+      <title>Android Studio 3.3.2: Release Kotlin project to Jcenter</title>
+      <link>https://www.harddone.com/post/as_push_kotlin_jcenter/</link>
+      <pubDate>Wed, 17 Apr 2019 11:42:49 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/as_push_kotlin_jcenter/</guid>
+      <description>概述 纸上得来终觉浅。 一直以为发布AAR到jcenter是非常简单的事，跟发布到私有服务器nexus应该没太多差别。没想到自己动手做过才知道千万道坑。 本文将记录在Android Studio 3.3.2下，如何上传用kotlin开发的aar到jcenter服务器以及遇到的问题。参考来自这篇博文，</description>
+    </item>
+    
+  </channel>
+</rss>

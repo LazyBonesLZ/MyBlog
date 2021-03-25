@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Studio on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Android-Studio/</link>
+    <description>Recent content in Android Studio on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 14 Jun 2019 16:54:06 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Android-Studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to reduce the apk size of Unity Game</title>
+      <link>https://www.harddone.com/post/unity_apk_reduce/</link>
+      <pubDate>Fri, 14 Jun 2019 16:54:06 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/unity_apk_reduce/</guid>
+      <description>问题背景 由于本人非专业游戏开发者，本文不讨论如何专业的处理游戏资源和工程配置来减小安装包大小问题。只简单记录一下如何在打包时减小apk。 Unity项目,Lua开发子游戏逻辑。Unity中如何使用Lua开发不展开说明，我也不会。该问题的背景是老板要求我们将lua开发的子app提出来</description>
+    </item>
+    
+    <item>
+      <title>No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android</title>
+      <link>https://www.harddone.com/post/as_notoolchain_found/</link>
+      <pubDate>Fri, 14 Jun 2019 16:27:33 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/as_notoolchain_found/</guid>
+      <description>最近新项目需求可能用到身份证的扫描读取功能，就提前研究一下百度提供的OCR接口，下载官方demo导入Android studio后居然报错： No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android 突然就懵逼了。这是个什么错误？ 无从下手的情况下，只好开启Google大法。 因为本地安装的 AS版本是3.2，但是百度d</description>
+    </item>
+    
+    <item>
+      <title>Mac OS Andriod Studio:Gradle 3.3 requires Java 7 or later to run.You are currently using Java 6</title>
+      <link>https://www.harddone.com/post/mac_as_jdk/</link>
+      <pubDate>Sun, 12 Nov 2017 16:45:46 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/mac_as_jdk/</guid>
+      <description>1.project structure设置界面中设置jdk路径是jdk1.7或以上的版本:File-&amp;gt;Project Structure-&amp;gt;SDK Location 2.修改AS置默认的jdk版本。 (如果是jdk1.8版本的话还需要修改/Application/Android Studio/Contents/info.plist) 如何找到该路径？ Android Studio.app -&amp;gt; 右键 -&amp;gt; 显示包内容 修改前： &amp;lt;key&amp;gt;JVMVersion&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;1.6*,1.7+&amp;lt;/string&amp;gt; 修改后： &amp;lt;key&amp;gt;JVMVersion&amp;lt;/key&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

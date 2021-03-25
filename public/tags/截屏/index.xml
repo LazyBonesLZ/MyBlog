@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>截屏 on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/%E6%88%AA%E5%B1%8F/</link>
+    <description>Recent content in 截屏 on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 23 Apr 2020 15:01:15 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/%E6%88%AA%E5%B1%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity ScreenCapture</title>
+      <link>https://www.harddone.com/post/unity_capture/</link>
+      <pubDate>Thu, 23 Apr 2020 15:01:15 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/unity_capture/</guid>
+      <description>我发现为iOS应用商店提供屏幕截图非常耗时，因为它们必须具有iOS设备分辨率。 在所有设备上构建和运行，截屏并上传需要花费大量时间。 利用Unity Scripts 提供的 API，可以做一个功能菜单，开发人员只需要切换不同的屏幕分辨率，然后直接点击Screenshot/Grab菜单即可得到不同尺寸的</description>
+    </item>
+    
+  </channel>
+</rss>

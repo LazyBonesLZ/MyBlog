@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity-Lua on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Unity-Lua/</link>
+    <description>Recent content in Unity-Lua on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 14 Jun 2019 16:54:06 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Unity-Lua/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to reduce the apk size of Unity Game</title>
+      <link>https://www.harddone.com/post/unity_apk_reduce/</link>
+      <pubDate>Fri, 14 Jun 2019 16:54:06 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/unity_apk_reduce/</guid>
+      <description>问题背景 由于本人非专业游戏开发者，本文不讨论如何专业的处理游戏资源和工程配置来减小安装包大小问题。只简单记录一下如何在打包时减小apk。 Unity项目,Lua开发子游戏逻辑。Unity中如何使用Lua开发不展开说明，我也不会。该问题的背景是老板要求我们将lua开发的子app提出来</description>
+    </item>
+    
+  </channel>
+</rss>

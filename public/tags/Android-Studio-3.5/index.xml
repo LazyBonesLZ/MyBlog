@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Studio 3.5 on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Android-Studio-3.5/</link>
+    <description>Recent content in Android Studio 3.5 on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 23 Oct 2019 15:12:26 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Android-Studio-3.5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Studio: Could not find method classpath() for arguments</title>
+      <link>https://www.harddone.com/post/gradle_dsl/</link>
+      <pubDate>Wed, 23 Oct 2019 15:12:26 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/gradle_dsl/</guid>
+      <description>&lt;p&gt;Some misoperations lead to errors &lt;code&gt;Could not find method classpath()&lt;/code&gt; when complie an Android project.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Invoke-customs are only supported starting with android 0 --min-api 26</title>
+      <link>https://www.harddone.com/post/min-api-26-bug/</link>
+      <pubDate>Wed, 18 Sep 2019 16:41:39 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/min-api-26-bug/</guid>
+      <description>Android Studio升级到3.5，工程在编译时出现错误： Invoke-customs are only supported starting with android 0 --min-api 26 解决方案： android{ //... compileOptions { sourceCompatibility JavaVersion.VERSION_1_8 targetCompatibility JavaVersion.VERSION_1_8 } //... } JavaVersion请根据您开发环境中实际的版本设置。 参考链接： https://stackoverflow.com/questions/49891730/invoke-customs-are-only-supported-starting-with-android-0-min-api-26</description>
+    </item>
+    
+  </channel>
+</rss>

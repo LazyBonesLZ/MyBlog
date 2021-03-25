@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/categories/</link>
+    <description>Recent content in Categories on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 15 Mar 2021 11:52:29 +0800</lastBuildDate><atom:link href="https://www.harddone.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android</title>
+      <link>https://www.harddone.com/categories/Android/</link>
+      <pubDate>Mon, 15 Mar 2021 11:52:29 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/categories/Android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://www.harddone.com/categories/Git/</link>
+      <pubDate>Mon, 15 Mar 2021 11:08:08 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/categories/Git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://www.harddone.com/categories/Python/</link>
+      <pubDate>Fri, 22 May 2020 10:14:27 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/categories/Python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unity</title>
+      <link>https://www.harddone.com/categories/Unity/</link>
+      <pubDate>Thu, 23 Apr 2020 15:01:15 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/categories/Unity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Website</title>
+      <link>https://www.harddone.com/categories/Website/</link>
+      <pubDate>Thu, 25 Apr 2019 11:13:24 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/categories/Website/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lua</title>
+      <link>https://www.harddone.com/categories/Lua/</link>
+      <pubDate>Thu, 18 Apr 2019 10:01:05 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/categories/Lua/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alpha/Bata Test on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Alpha/Bata-Test/</link>
+    <description>Recent content in Alpha/Bata Test on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language><atom:link href="https://www.harddone.com/tags/Alpha/Bata-Test/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google play billing Alpha / Beta 测试</title>
+      <link>https://www.harddone.com/post/gp_billing/</link>
+      <pubDate>Wed, 11 Jul 2018 15:29:05 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/gp_billing/</guid>
+      <description>本文假设你已经集成Google play billing SDK ，根据google官方提供的文档说明，提供了几种验证应用内购买逻辑的方式。 本文记录的是alpha或beta测试的一些操作细节。供参考。 ！！！！！前方多图预警！！！！！！ 一 前提 1.已注册Google play console账号； 2.已注册Google账号</description>
+    </item>
+    
+  </channel>
+</rss>

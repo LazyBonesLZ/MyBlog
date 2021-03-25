@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Unity/</link>
+    <description>Recent content in Unity on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 23 Apr 2020 15:01:15 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Unity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity ScreenCapture</title>
+      <link>https://www.harddone.com/post/unity_capture/</link>
+      <pubDate>Thu, 23 Apr 2020 15:01:15 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/unity_capture/</guid>
+      <description>我发现为iOS应用商店提供屏幕截图非常耗时，因为它们必须具有iOS设备分辨率。 在所有设备上构建和运行，截屏并上传需要花费大量时间。 利用Unity Scripts 提供的 API，可以做一个功能菜单，开发人员只需要切换不同的屏幕分辨率，然后直接点击Screenshot/Grab菜单即可得到不同尺寸的</description>
+    </item>
+    
+    <item>
+      <title>Unity Call Android native method with array parameters</title>
+      <link>https://www.harddone.com/post/unit_call_android_arr/</link>
+      <pubDate>Wed, 11 Jul 2018 01:59:34 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/unit_call_android_arr/</guid>
+      <description>Unity开发过程中，如果要调用Android端的java方法，恰巧该方法的参数是可变参数或者数组，使用unity的AndroidJavaObject提供的call方法直接传递c#数组，是需要对数组参数做一下处理。举例说明： java方法如下： public void addList(String... values){ } unity c#调用时，需要把传入的参</description>
+    </item>
+    
+  </channel>
+</rss>

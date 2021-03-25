@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ANR on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/ANR/</link>
+    <description>Recent content in ANR on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 15 Mar 2021 11:52:29 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/ANR/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Play Console: 如何通过Android Vitals记录的日志来优化App的ANR</title>
+      <link>https://www.harddone.com/post/google_play_anr/</link>
+      <pubDate>Mon, 15 Mar 2021 11:52:29 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/google_play_anr/</guid>
+      <description>在Android应用开发中，最令开发人员抓狂的是各种莫名其妙的ANR，出现这种问题时，很少能在自己的测试设备或者开发环境中重现。但是ANR出现的频率过高却又十分影响用户的体验。 Google play console提供了 Android vitals工具，以供开发人员检查应用上线之后的性能表现。其ANR数据记录了用</description>
+    </item>
+    
+  </channel>
+</rss>

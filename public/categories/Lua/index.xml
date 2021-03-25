@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lua on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/categories/Lua/</link>
+    <description>Recent content in Lua on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 18 Apr 2019 10:01:05 +0800</lastBuildDate><atom:link href="https://www.harddone.com/categories/Lua/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lua Override Methods</title>
+      <link>https://www.harddone.com/post/lua_override/</link>
+      <pubDate>Thu, 18 Apr 2019 10:01:05 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/lua_override/</guid>
+      <description>最近在更新一个Lua项目中，很多地方调用了同一个方法，想在不改动调用逻辑的情况下，如何不执行原来的方法逻辑，而执行新的方法逻辑呢？ 我们可以直接重载该方法，但是前提是必须在第一次调用该方法前就完成了重载。 请注意这种方式的前提：一定是要在该方法第一次被调用前完成你的重载，否则无效。 举</description>
+    </item>
+    
+  </channel>
+</rss>

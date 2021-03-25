@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gradle3.3 on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Gradle3.3/</link>
+    <description>Recent content in Gradle3.3 on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 12 Nov 2017 16:45:46 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Gradle3.3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac OS Andriod Studio:Gradle 3.3 requires Java 7 or later to run.You are currently using Java 6</title>
+      <link>https://www.harddone.com/post/mac_as_jdk/</link>
+      <pubDate>Sun, 12 Nov 2017 16:45:46 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/mac_as_jdk/</guid>
+      <description>1.project structure设置界面中设置jdk路径是jdk1.7或以上的版本:File-&amp;gt;Project Structure-&amp;gt;SDK Location 2.修改AS置默认的jdk版本。 (如果是jdk1.8版本的话还需要修改/Application/Android Studio/Contents/info.plist) 如何找到该路径？ Android Studio.app -&amp;gt; 右键 -&amp;gt; 显示包内容 修改前： &amp;lt;key&amp;gt;JVMVersion&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;1.6*,1.7+&amp;lt;/string&amp;gt; 修改后： &amp;lt;key&amp;gt;JVMVersion&amp;lt;/key&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

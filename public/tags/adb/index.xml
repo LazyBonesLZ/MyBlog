@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>adb on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/adb/</link>
+    <description>Recent content in adb on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 22 May 2020 10:14:27 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/adb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android app bundle tool for Mac</title>
+      <link>https://www.harddone.com/post/aabtool_for_mac/</link>
+      <pubDate>Fri, 22 May 2020 10:14:27 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/aabtool_for_mac/</guid>
+      <description>&lt;p&gt;As google says, you can use &lt;a href=&#34;https://developer.android.com/studio/command-line/bundletool&#34;&gt;&lt;code&gt;bundletool&lt;/code&gt;&lt;/a&gt; to test your app bundle locally. But the command line is not very convenient to use, so we developed this GUI application based on python.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gradle Run Adb</title>
+      <link>https://www.harddone.com/post/gradle-run-adb/</link>
+      <pubDate>Wed, 18 Sep 2019 16:57:37 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/gradle-run-adb/</guid>
+      <description>之前写过一篇关于python执行adb命令的文章,主要功能是在设备上创建文件夹，然后向创建的目录下上传文件。业务需求是上传obb文件到设备上，但是执行该python脚本，需要传入太多的参数：obb路径，app package name, 以及版本号等等。参数过多导致使用不便，且时间久了自己也就忘了。 所以，</description>
+    </item>
+    
+    <item>
+      <title>Python执行Android adb 命令</title>
+      <link>https://www.harddone.com/post/python_adb/</link>
+      <pubDate>Thu, 18 Apr 2019 10:12:15 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/python_adb/</guid>
+      <description>说明 本文以具体的python脚本为例进行说明，两个脚本都是根据开发过程中的业务需求而开发，并不具备通用性。但是其核心代码都是通过python的api执行adb命令： //example cmd = &amp;#39;adb shell&amp;#39; os.system(cmd) 1.uninstall_clean_app.py 根据app bundle id 卸载应用，并且删除该应用在sdcard目录下生成的文件夹等。当前脚本中所删除的目录是写死</description>
+    </item>
+    
+  </channel>
+</rss>

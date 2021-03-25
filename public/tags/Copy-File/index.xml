@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Copy File on ColorfulDark Blog</title>
+    <link>https://www.harddone.com/tags/Copy-File/</link>
+    <description>Recent content in Copy File on ColorfulDark Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 16 Aug 2019 10:59:48 +0800</lastBuildDate><atom:link href="https://www.harddone.com/tags/Copy-File/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gradle Copy File</title>
+      <link>https://www.harddone.com/post/gradle_copy_file/</link>
+      <pubDate>Fri, 16 Aug 2019 10:59:48 +0800</pubDate>
+      
+      <guid>https://www.harddone.com/post/gradle_copy_file/</guid>
+      <description>&lt;p&gt;Android Studio 在Build工程之前，如果要将一些应用必须的配置文件拷贝到assets目录下，可以自定义task,在build之前先执行。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
