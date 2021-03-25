@@ -1,7 +1,7 @@
 [submodule "public"]
 	path = public
-	url = https://github.com/LazyBonesLZ/LazyBonesLZ.github.io.git
+	url = git@github.com:LazyBonesLZ/LazyBonesLZ.github.io.git
 	branch = master
 [submodule "themes/maupassant"]
 	path = themes/maupassant
-	url = https://github.com/LazyBonesLZ/maupassant-hugo.git
+	url = git@github.com:LazyBonesLZ/maupassant-hugo.git
